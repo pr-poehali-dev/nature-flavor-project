@@ -4,6 +4,7 @@ import Icon from "@/components/ui/icon";
 const IMG_LOGO = "https://cdn.poehali.dev/projects/32ce1ba6-2d08-4502-a6d8-df9c23186132/bucket/0fd4115a-f981-4939-ac44-54c00256234c.jpg";
 const IMG_SMOOTHIES = "https://cdn.poehali.dev/projects/32ce1ba6-2d08-4502-a6d8-df9c23186132/files/4a95885d-4bf5-4cb0-944a-14b12ddf7cda.jpg";
 const IMG_CAPSULES = "https://cdn.poehali.dev/projects/32ce1ba6-2d08-4502-a6d8-df9c23186132/files/7abe10d0-4706-4c11-803f-99f81870621e.jpg";
+const IMG_TEAS = "https://cdn.poehali.dev/projects/32ce1ba6-2d08-4502-a6d8-df9c23186132/files/0ada8d9e-ab45-4cc4-8d4a-b09ea00e9db4.jpg";
 const IMG_HERO = "https://cdn.poehali.dev/projects/32ce1ba6-2d08-4502-a6d8-df9c23186132/files/a958ae2d-f930-4685-a342-6f70394f016b.jpg";
 const IMG_FRUITS = "https://cdn.poehali.dev/projects/32ce1ba6-2d08-4502-a6d8-df9c23186132/files/c45cd9e7-8cbf-411f-a26f-f45d80ea4f98.jpg";
 const IMG_TERRACE = "https://cdn.poehali.dev/projects/32ce1ba6-2d08-4502-a6d8-df9c23186132/files/30f11bae-0215-42f6-9a75-7751a59e2e4a.jpg";
@@ -364,7 +365,28 @@ export default function Index() {
 
           {/* Teas */}
           {activeTab === "teas" && (
-            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+            <div className="flex flex-col gap-6">
+              {/* Баннер чаёв */}
+              <div className="rounded-3xl overflow-hidden border grid md:grid-cols-2" style={{ backgroundColor: CREAM, borderColor: BORDER }}>
+                <div className="overflow-hidden" style={{ maxHeight: 260 }}>
+                  <img
+                    src={IMG_TEAS}
+                    alt="Чайные капсулы Море Ягод"
+                    className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
+                    style={{ objectPosition: "center center" }}
+                  />
+                </div>
+                <div className="p-7 flex flex-col justify-center">
+                  <span className="font-body text-xs font-semibold uppercase tracking-widest mb-3" style={{ color: MUTED }}>Капсула 90г · концентрат</span>
+                  <h3 className="font-display text-2xl md:text-3xl font-semibold mb-3" style={{ color: DARK }}>Ягодный концентрат в каждой капсуле</h3>
+                  <p className="font-body text-sm leading-relaxed mb-4" style={{ color: MUTED }}>Насыщенный бордовый концентрат из малины, облепихи, клюквы и смородины. Залейте горячей водой — и напиток готов за 2 минуты.</p>
+                  <div className="flex gap-2 flex-wrap">
+                    <span className="px-3 py-1 rounded-full font-body text-xs font-semibold" style={{ backgroundColor: BERRY_LIGHT, color: BERRY }}>Горячий и холодный</span>
+                    <span className="px-3 py-1 rounded-full font-body text-xs font-semibold" style={{ backgroundColor: "hsl(50,88%,90%)", color: "hsl(40,88%,38%)" }}>1:20 разведение</span>
+                  </div>
+                </div>
+              </div>
+              <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
               {CATALOG_TEAS.map((item) => (
                 <div key={item.name} className="card-hover rounded-3xl overflow-hidden border" style={{ backgroundColor: item.accent, borderColor: "transparent" }}>
                   <div className="p-7">
@@ -380,6 +402,7 @@ export default function Index() {
                   </div>
                 </div>
               ))}
+              </div>
             </div>
           )}
 
