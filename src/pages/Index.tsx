@@ -1,6 +1,7 @@
 import { useState } from "react";
 import Icon from "@/components/ui/icon";
 
+const IMG_LOGO = "https://cdn.poehali.dev/projects/32ce1ba6-2d08-4502-a6d8-df9c23186132/bucket/bfa69a7f-7d70-445b-9082-f6bf192afedc.jpg";
 const IMG_HERO = "https://cdn.poehali.dev/projects/32ce1ba6-2d08-4502-a6d8-df9c23186132/files/a958ae2d-f930-4685-a342-6f70394f016b.jpg";
 const IMG_FRUITS = "https://cdn.poehali.dev/projects/32ce1ba6-2d08-4502-a6d8-df9c23186132/files/c45cd9e7-8cbf-411f-a26f-f45d80ea4f98.jpg";
 const IMG_TERRACE = "https://cdn.poehali.dev/projects/32ce1ba6-2d08-4502-a6d8-df9c23186132/files/30f11bae-0215-42f6-9a75-7751a59e2e4a.jpg";
@@ -141,9 +142,13 @@ export default function Index() {
       {/* ── NAV ── */}
       <header className="sticky top-0 z-50 border-b" style={{ backgroundColor: "rgba(252,248,240,0.96)", backdropFilter: "blur(12px)", borderColor: BORDER }}>
         <div className="container mx-auto px-4 flex items-center justify-between h-16">
-          <button className="flex items-center gap-2.5" onClick={() => scrollTo("home")}>
-            <span className="text-2xl">🍓</span>
-            <span className="font-display text-2xl font-semibold tracking-tight" style={{ color: DARK }}>Море Ягод</span>
+          <button className="flex items-center" onClick={() => scrollTo("home")}>
+            <img
+              src={IMG_LOGO}
+              alt="Море Ягод"
+              className="h-12 w-auto object-contain"
+              style={{ mixBlendMode: "multiply" }}
+            />
           </button>
 
           <nav className="hidden md:flex items-center gap-7">
@@ -184,15 +189,21 @@ export default function Index() {
         <div className="container mx-auto px-4 pt-14 pb-0 grid md:grid-cols-2 gap-10 items-end relative">
           {/* text col */}
           <div className="pb-16 md:pb-20">
-            <div className="inline-flex items-center gap-2 text-xs font-body font-medium px-4 py-1.5 rounded-full mb-7 animate-fade-up" style={{ backgroundColor: BERRY_LIGHT, color: BERRY }}>
-              🌿 Натуральные концентраты без консервантов
+            {/* Hero logo */}
+            <div className="animate-fade-up mb-6">
+              <img
+                src={IMG_LOGO}
+                alt="Море Ягод"
+                className="h-36 md:h-44 w-auto object-contain"
+                style={{ mixBlendMode: "multiply" }}
+              />
             </div>
 
-            <h1 className="font-display font-semibold leading-[1.05] mb-7 animate-fade-up delay-100" style={{ fontSize: "clamp(3rem,7vw,5.5rem)", color: DARK }}>
+            <h1 className="font-display font-semibold leading-[1.05] mb-7 animate-fade-up delay-100" style={{ fontSize: "clamp(2.4rem,5vw,4rem)", color: DARK }}>
               Вкус,{" "}
               <em className="not-italic" style={{ color: BERRY }}>которым</em>
-              <br />делится<br />
-              <em className="not-italic" style={{ color: CITRUS }}>природа</em>
+              <br />делится{" "}
+              <em className="not-italic" style={{ color: CITRUS }}>лето</em>
             </h1>
 
             <p className="font-body text-base leading-relaxed mb-9 max-w-md animate-fade-up delay-200" style={{ color: MUTED }}>
@@ -702,9 +713,13 @@ export default function Index() {
       <footer className="border-t py-10" style={{ backgroundColor: DARK, borderColor: "rgba(255,255,255,0.08)" }}>
         <div className="container mx-auto px-4">
           <div className="flex flex-col md:flex-row items-center justify-between gap-5">
-            <div className="flex items-center gap-2.5">
-              <span className="text-2xl">🍓</span>
-              <span className="font-display text-2xl font-semibold" style={{ color: CREAM }}>Море Ягод</span>
+            <div className="flex items-center">
+              <img
+                src={IMG_LOGO}
+                alt="Море Ягод"
+                className="h-14 w-auto object-contain"
+                style={{ filter: "brightness(0) invert(1)", opacity: 0.85 }}
+              />
             </div>
             <p className="font-body text-sm text-center" style={{ color: "rgba(252,248,240,0.38)" }}>
               © 2012–2026 ООО «Море Ягод». Все права защищены.
