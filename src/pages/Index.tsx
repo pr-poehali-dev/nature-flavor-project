@@ -2,8 +2,8 @@ import { useState } from "react";
 import Icon from "@/components/ui/icon";
 
 const IMG_LOGO = "https://cdn.poehali.dev/projects/32ce1ba6-2d08-4502-a6d8-df9c23186132/bucket/0fd4115a-f981-4939-ac44-54c00256234c.jpg";
-const IMG_SMOOTHIES = "https://cdn.poehali.dev/projects/32ce1ba6-2d08-4502-a6d8-df9c23186132/bucket/f85c7bd7-cc6a-4e34-9d44-8e70b9bcecce.jpg";
-const IMG_CAPSULES = "https://cdn.poehali.dev/projects/32ce1ba6-2d08-4502-a6d8-df9c23186132/bucket/877a75a5-5860-496e-88cf-7afef363c4da.jpg";
+const IMG_SMOOTHIES = "https://cdn.poehali.dev/projects/32ce1ba6-2d08-4502-a6d8-df9c23186132/files/4a95885d-4bf5-4cb0-944a-14b12ddf7cda.jpg";
+const IMG_CAPSULES = "https://cdn.poehali.dev/projects/32ce1ba6-2d08-4502-a6d8-df9c23186132/files/7abe10d0-4706-4c11-803f-99f81870621e.jpg";
 const IMG_HERO = "https://cdn.poehali.dev/projects/32ce1ba6-2d08-4502-a6d8-df9c23186132/files/a958ae2d-f930-4685-a342-6f70394f016b.jpg";
 const IMG_FRUITS = "https://cdn.poehali.dev/projects/32ce1ba6-2d08-4502-a6d8-df9c23186132/files/c45cd9e7-8cbf-411f-a26f-f45d80ea4f98.jpg";
 const IMG_TERRACE = "https://cdn.poehali.dev/projects/32ce1ba6-2d08-4502-a6d8-df9c23186132/files/30f11bae-0215-42f6-9a75-7751a59e2e4a.jpg";
@@ -247,40 +247,44 @@ export default function Index() {
           </div>
 
           {/* product visuals */}
-          <div className="relative flex flex-col gap-4 pb-8 animate-fade-up delay-300">
-            {/* Смузи дойпаки */}
-            <div className="relative rounded-3xl overflow-hidden shadow-xl" style={{ aspectRatio: "16/9" }}>
-              <img
-                src={IMG_SMOOTHIES}
-                alt="Смузи Море Ягод"
-                className="w-full h-full object-cover object-center"
-                style={{ objectPosition: "60% center" }}
-              />
-              <div className="absolute inset-0" style={{ background: "linear-gradient(to right, rgba(20,8,5,0.45) 0%, transparent 50%)" }} />
-              <div className="absolute bottom-4 left-4">
-                <div className="font-body text-xs font-semibold uppercase tracking-widest mb-1" style={{ color: "rgba(252,248,240,0.7)" }}>Дойпак · смузи</div>
-                <div className="font-display text-2xl font-semibold" style={{ color: CREAM }}>Манго, клубника,<br/>маракуйя</div>
+          <div className="flex flex-col gap-4 pb-8 animate-fade-up delay-300">
+            {/* Смузи */}
+            <div className="rounded-3xl overflow-hidden border" style={{ backgroundColor: CREAM, borderColor: BORDER }}>
+              <div className="aspect-[4/3] overflow-hidden">
+                <img
+                  src={IMG_SMOOTHIES}
+                  alt="Смузи Море Ягод"
+                  className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
+                />
               </div>
-              <div className="absolute top-3 right-3 px-3 py-1 rounded-full font-body text-xs font-semibold" style={{ backgroundColor: SUN, color: DARK }}>
-                Без консервантов
+              <div className="px-5 py-4 flex items-center justify-between">
+                <div>
+                  <div className="font-body text-xs font-semibold uppercase tracking-widest mb-0.5" style={{ color: MUTED }}>Дойпак · смузи</div>
+                  <div className="font-display text-xl font-semibold" style={{ color: DARK }}>Манго, клубника, маракуйя</div>
+                </div>
+                <span className="px-3 py-1 rounded-full font-body text-xs font-semibold shrink-0 ml-3" style={{ backgroundColor: SUN, color: DARK }}>
+                  Без консервантов
+                </span>
               </div>
             </div>
 
-            {/* Капсулы лимонадов */}
-            <div className="relative rounded-3xl overflow-hidden shadow-xl" style={{ aspectRatio: "16/8" }}>
-              <img
-                src={IMG_CAPSULES}
-                alt="Капсулы лимонадов Море Ягод"
-                className="w-full h-full object-cover"
-                style={{ objectPosition: "center 30%" }}
-              />
-              <div className="absolute inset-0" style={{ background: "linear-gradient(to right, rgba(20,8,5,0.5) 0%, transparent 55%)" }} />
-              <div className="absolute bottom-4 left-4">
-                <div className="font-body text-xs font-semibold uppercase tracking-widest mb-1" style={{ color: "rgba(252,248,240,0.7)" }}>Капсула · лимонад</div>
-                <div className="font-display text-2xl font-semibold" style={{ color: CREAM }}>Лайм-мята,<br/>грейпфрут, базилик</div>
+            {/* Капсулы */}
+            <div className="rounded-3xl overflow-hidden border" style={{ backgroundColor: CREAM, borderColor: BORDER }}>
+              <div className="aspect-[4/3] overflow-hidden">
+                <img
+                  src={IMG_CAPSULES}
+                  alt="Капсулы лимонадов Море Ягод"
+                  className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
+                />
               </div>
-              <div className="absolute top-3 right-3 px-3 py-1 rounded-full font-body text-xs font-semibold" style={{ backgroundColor: BERRY_LIGHT, color: BERRY }}>
-                15+ вкусов
+              <div className="px-5 py-4 flex items-center justify-between">
+                <div>
+                  <div className="font-body text-xs font-semibold uppercase tracking-widest mb-0.5" style={{ color: MUTED }}>Капсула · лимонад</div>
+                  <div className="font-display text-xl font-semibold" style={{ color: DARK }}>Лайм-мята, грейпфрут, базилик</div>
+                </div>
+                <span className="px-3 py-1 rounded-full font-body text-xs font-semibold shrink-0 ml-3" style={{ backgroundColor: BERRY_LIGHT, color: BERRY }}>
+                  15+ вкусов
+                </span>
               </div>
             </div>
           </div>
@@ -383,14 +387,14 @@ export default function Index() {
           {activeTab === "lemonades" && (
             <div className="flex flex-col gap-10">
               {/* Фото-баннер капсул */}
-              <div className="relative rounded-3xl overflow-hidden shadow-lg mb-2" style={{ aspectRatio: "16/6" }}>
-                <img src={IMG_CAPSULES} alt="Капсулы лимонадов" className="w-full h-full object-cover" style={{ objectPosition: "center 30%" }} />
-                <div className="absolute inset-0" style={{ background: "linear-gradient(to right, rgba(10,4,2,0.55) 0%, transparent 60%)" }} />
-                <div className="absolute inset-0 flex items-center px-8">
-                  <div>
-                    <div className="font-body text-xs uppercase tracking-widest font-semibold mb-1" style={{ color: "rgba(252,248,240,0.7)" }}>Капсула 70г · с кусочками фруктов</div>
-                    <div className="font-display text-3xl font-semibold" style={{ color: CREAM }}>Капсулы с разными вкусами<br/>и натуральными фруктами</div>
-                  </div>
+              <div className="rounded-3xl overflow-hidden border grid md:grid-cols-2 mb-2" style={{ backgroundColor: CREAM, borderColor: BORDER }}>
+                <div className="overflow-hidden" style={{ maxHeight: 260 }}>
+                  <img src={IMG_CAPSULES} alt="Капсулы лимонадов" className="w-full h-full object-cover transition-transform duration-500 hover:scale-105" style={{ objectPosition: "center 30%" }} />
+                </div>
+                <div className="p-7 flex flex-col justify-center">
+                  <span className="font-body text-xs font-semibold uppercase tracking-widest mb-3" style={{ color: MUTED }}>Капсула 70г · с кусочками фруктов</span>
+                  <h3 className="font-display text-2xl md:text-3xl font-semibold mb-3" style={{ color: DARK }}>Капсулы с разными вкусами и натуральными фруктами</h3>
+                  <p className="font-body text-sm leading-relaxed" style={{ color: MUTED }}>Каждая капсула содержит кусочки настоящих фруктов — без ароматизаторов и красителей.</p>
                 </div>
               </div>
               {LEMONADE_BASES.map((base) => (
@@ -431,18 +435,16 @@ export default function Index() {
           {/* Smoothies */}
           {activeTab === "smoothies" && (
             <div className="flex flex-col gap-6">
-              {/* Фото-баннер смузи */}
-              <div className="relative rounded-3xl overflow-hidden shadow-lg" style={{ aspectRatio: "16/6" }}>
-                <img src={IMG_SMOOTHIES} alt="Смузи Море Ягод" className="w-full h-full object-cover" style={{ objectPosition: "60% center" }} />
-                <div className="absolute inset-0" style={{ background: "linear-gradient(to right, rgba(10,4,2,0.55) 0%, transparent 55%)" }} />
-                <div className="absolute inset-0 flex items-center px-8">
-                  <div>
-                    <div className="font-body text-xs uppercase tracking-widest font-semibold mb-1" style={{ color: "rgba(252,248,240,0.7)" }}>Дойпак · zip-замок</div>
-                    <div className="font-display text-3xl font-semibold" style={{ color: CREAM }}>Только натуральные ягоды<br/>и тропические фрукты</div>
-                  </div>
+              {/* Баннер смузи */}
+              <div className="rounded-3xl overflow-hidden border grid md:grid-cols-2" style={{ backgroundColor: CREAM, borderColor: BORDER }}>
+                <div className="overflow-hidden" style={{ maxHeight: 260 }}>
+                  <img src={IMG_SMOOTHIES} alt="Смузи Море Ягод" className="w-full h-full object-cover transition-transform duration-500 hover:scale-105" style={{ objectPosition: "center center" }} />
                 </div>
-                <div className="absolute top-4 right-4 px-3 py-1.5 rounded-full font-body text-xs font-semibold" style={{ backgroundColor: SUN, color: DARK }}>
-                  Без красителей и консервантов
+                <div className="p-7 flex flex-col justify-center">
+                  <span className="font-body text-xs font-semibold uppercase tracking-widest mb-3" style={{ color: MUTED }}>Дойпак · zip-замок</span>
+                  <h3 className="font-display text-2xl md:text-3xl font-semibold mb-3" style={{ color: DARK }}>Только натуральные ягоды и тропические фрукты</h3>
+                  <p className="font-body text-sm leading-relaxed mb-4" style={{ color: MUTED }}>Без красителей, консервантов и термической обработки.</p>
+                  <span className="inline-flex w-fit px-3 py-1 rounded-full font-body text-xs font-semibold" style={{ backgroundColor: SUN, color: DARK }}>Без консервантов</span>
                 </div>
               </div>
               <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
