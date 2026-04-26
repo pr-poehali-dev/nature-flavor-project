@@ -201,9 +201,9 @@ export default function Index() {
           <div className="absolute bottom-0 -left-20 w-96 h-96 rounded-full opacity-20 blur-3xl" style={{ background: BERRY }} />
         </div>
 
-        <div className="container mx-auto px-4 pt-14 pb-0 grid md:grid-cols-2 gap-10 items-end relative">
+        <div className="container mx-auto px-4 pt-10 pb-0 grid md:grid-cols-2 gap-10 items-start relative">
           {/* text col */}
-          <div className="pb-16 md:pb-20">
+          <div className="pt-4 pb-16 md:pb-20">
 
             {/* Крупный заголовок МОРЕ ЯГОД */}
             <h1
