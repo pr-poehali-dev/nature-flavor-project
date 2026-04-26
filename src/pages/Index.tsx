@@ -141,7 +141,7 @@ export default function Index() {
         <div className="container mx-auto px-4 flex items-center justify-between h-16">
           <div className="flex items-center gap-2 cursor-pointer" onClick={() => scrollTo("home")}>
             <span className="text-2xl">🌿</span>
-            <span className="font-display text-2xl font-semibold" style={{ color: "hsl(24,20%,18%)" }}>Живица</span>
+            <span className="font-display text-2xl font-semibold" style={{ color: "hsl(24,20%,18%)" }}>Море Ягод</span>
           </div>
 
           <nav className="hidden md:flex items-center gap-6">
@@ -489,7 +489,7 @@ export default function Index() {
                 С 2012 года<br />мы несём вкус леса
               </h2>
               <p className="font-body leading-relaxed mb-5" style={{ color: "hsl(24,15%,45%)" }}>
-                Живица началась с маленькой лаборатории в Томске. Основатели — семья потомственных сборщиков ягод, которые хотели поделиться вкусами сибирского леса со всей страной.
+                «Море Ягод» началось с маленькой лаборатории в Томске. Основатели — семья потомственных сборщиков ягод, которые хотели поделиться вкусами сибирского леса со всей страной.
               </p>
               <p className="font-body leading-relaxed mb-8" style={{ color: "hsl(24,15%,45%)" }}>
                 Сегодня мы работаем с более чем 40 семьями сборщиков в Томской, Новосибирской областях и на Алтае. У нас своё небольшое производство с лицензией Роспотребнадзора и два фирменных магазина в Москве.
@@ -605,10 +605,10 @@ export default function Index() {
           <div className="flex flex-col md:flex-row items-center justify-between gap-4">
             <div className="flex items-center gap-2">
               <span className="text-xl">🌿</span>
-              <span className="font-display text-xl font-semibold" style={{ color: "hsl(36,28%,97%)" }}>Живица</span>
+              <span className="font-display text-xl font-semibold" style={{ color: "hsl(36,28%,97%)" }}>Море Ягод</span>
             </div>
             <p className="font-body text-sm text-center" style={{ color: "rgba(245,240,230,0.4)" }}>
-              © 2012–2026 ООО «Живица». Все права защищены.
+              © 2012–2026 ООО «Море Ягод». Все права защищены.
             </p>
             <div className="flex gap-4 flex-wrap justify-center">
               {NAV_ITEMS.slice(0, 5).map((item) => (
