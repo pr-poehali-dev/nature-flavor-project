@@ -204,18 +204,49 @@ export default function Index() {
         <div className="container mx-auto px-4 pt-14 pb-0 grid md:grid-cols-2 gap-10 items-end relative">
           {/* text col */}
           <div className="pb-16 md:pb-20">
-            <div className="inline-flex items-center gap-2 text-xs font-body font-medium px-4 py-1.5 rounded-full mb-7 animate-fade-up" style={{ backgroundColor: BERRY_LIGHT, color: BERRY }}>
-              🌿 Натуральные концентраты без консервантов
+
+            {/* Россыпь фруктов + название */}
+            <div className="animate-fade-up mb-6">
+              {/* Фруктовая россыпь */}
+              <div className="flex flex-wrap gap-2 mb-4 select-none" aria-hidden="true">
+                {[
+                  { e: "🍓", s: "text-4xl", r: "-rotate-12" },
+                  { e: "🥭", s: "text-5xl", r: "rotate-6" },
+                  { e: "🍋", s: "text-3xl", r: "-rotate-6" },
+                  { e: "🫐", s: "text-4xl", r: "rotate-12" },
+                  { e: "🍊", s: "text-3xl", r: "-rotate-3" },
+                  { e: "🍇", s: "text-4xl", r: "rotate-8" },
+                  { e: "🍈", s: "text-3xl", r: "-rotate-10" },
+                  { e: "🍍", s: "text-4xl", r: "rotate-4" },
+                  { e: "🍒", s: "text-3xl", r: "-rotate-7" },
+                  { e: "🥝", s: "text-4xl", r: "rotate-10" },
+                ].map((item, i) => (
+                  <span
+                    key={i}
+                    className={`${item.s} ${item.r} inline-block transition-transform hover:scale-125 duration-200 drop-shadow-sm`}
+                    style={{ animationDelay: `${i * 0.05}s` }}
+                  >
+                    {item.e}
+                  </span>
+                ))}
+              </div>
+
+              {/* Крупный заголовок МОРЕ ЯГОД */}
+              <h1
+                className="font-display font-bold leading-none tracking-tight"
+                style={{ fontSize: "clamp(3.5rem,9vw,7rem)", color: DARK }}
+              >
+                <span style={{ color: BERRY }}>МОРЕ</span>{" "}
+                <span style={{ color: CITRUS }}>ЯГОД</span>
+              </h1>
             </div>
 
-            <h1 className="font-display font-semibold leading-[1.05] mb-7 animate-fade-up delay-100" style={{ fontSize: "clamp(2.4rem,5vw,4rem)", color: DARK }}>
-              Вкус,{" "}
-              <em className="not-italic" style={{ color: BERRY }}>которым</em>
-              <br />делится{" "}
-              <em className="not-italic" style={{ color: CITRUS }}>лето</em>
-            </h1>
+            {/* Слоган */}
+            <p className="font-display text-xl md:text-2xl font-medium mb-5 animate-fade-up delay-100" style={{ color: DARK, lineHeight: 1.3 }}>
+              Вкус, <em className="not-italic" style={{ color: BERRY }}>которым</em> делится лето
+            </p>
 
-            <p className="font-body text-base leading-relaxed mb-9 max-w-md animate-fade-up delay-200" style={{ color: MUTED }}>
+            <p className="font-body text-base leading-relaxed mb-9 max-w-md animate-fade-up delay-200 mt-4" style={{ color: MUTED }}>
               Добро пожаловать в «Море Ягод» — место, где свежесть природы и здоровье встречаются в каждом глотке! Мы создаём натуральные лимонады, смузи и чаи без термической обработки, чтобы сохранить максимум витаминов, ароматов и вкуса.
             </p>
 
