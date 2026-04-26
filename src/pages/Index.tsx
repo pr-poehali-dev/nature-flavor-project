@@ -11,24 +11,59 @@ const NAV_ITEMS = [
   { id: "contacts", label: "Контакты" },
 ];
 
-const CATALOG: Record<string, { name: string; type: string; volume: string; price: string; emoji: string; color: string; desc: string }[]> = {
-  teas: [
-    { name: "Малина-грейпфрут", type: "Чайный концентрат", volume: "500 мл", price: "490 ₽", emoji: "🍓", color: "bg-[hsl(350,30%,92%)]", desc: "Сочная малина и лёгкая горчинка грейпфрута. Освежает и бодрит." },
-    { name: "Облепиха-апельсин", type: "Чайный концентрат", volume: "500 мл", price: "520 ₽", emoji: "🍊", color: "bg-[hsl(38,50%,92%)]", desc: "Солнечная облепиха с цедрой апельсина. Витаминный заряд в каждом глотке." },
-    { name: "Клюква-апельсин", type: "Чайный концентрат", volume: "500 мл", price: "510 ₽", emoji: "🍊", color: "bg-[hsl(15,40%,92%)]", desc: "Терпкая клюква и сочный апельсин — классическое зимнее сочетание." },
-    { name: "Глинтвейн клюква-вишня", type: "Глинтвейн", volume: "500 мл", price: "560 ₽", emoji: "🍷", color: "bg-[hsl(345,35%,90%)]", desc: "Насыщенный согревающий глинтвейн из клюквы и вишни со специями." },
-    { name: "Чёрная смородина-апельсин", type: "Чайный концентрат", volume: "500 мл", price: "490 ₽", emoji: "🫐", color: "bg-[hsl(280,20%,92%)]", desc: "Яркая смородина и свежий апельсин — насыщенный витаминами дуэт." },
-    { name: "Марокканский цитрусовый", type: "Чай со специями", volume: "500 мл", price: "540 ₽", emoji: "🌶️", color: "bg-[hsl(30,40%,91%)]", desc: "Цитрусовый купаж с восточными специями. Тёплый и пряный аромат Марокко." },
-  ],
-  lemonades: [],
-  smoothies: [
-    { name: "Пинаколада", type: "Смузи-концентрат", volume: "500 мл", price: "590 ₽", emoji: "🥥", color: "bg-[hsl(48,40%,92%)]", desc: "Кокос, манго и ананас — тропическое трио в одном стакане." },
-    { name: "Тропический чилл", type: "Смузи-концентрат", volume: "500 мл", price: "570 ₽", emoji: "🍓", color: "bg-[hsl(350,35%,91%)]", desc: "Клубника, маракуйя и манго — взрыв тропических вкусов." },
-    { name: "Балийский трип", type: "Смузи-концентрат", volume: "500 мл", price: "550 ₽", emoji: "🥭", color: "bg-[hsl(38,45%,92%)]", desc: "Манго и маракуйя — освежающий дуэт с острова Бали." },
-    { name: "Летний бриз", type: "Смузи-концентрат", volume: "500 мл", price: "530 ₽", emoji: "🍉", color: "bg-[hsl(355,40%,92%)]", desc: "Манго и арбуз — сладкий летний бриз в каждом глотке." },
-    { name: "Манго шейк", type: "Смузи-концентрат", volume: "500 мл", price: "510 ₽", emoji: "🥭", color: "bg-[hsl(40,55%,92%)]", desc: "Чистый манговый вкус — насыщенный, сладкий и солнечный." },
-  ],
-};
+const CATALOG_TEAS = [
+  { name: "Малина-грейпфрут", type: "Чай · капсула 90г", price: "490 ₽", emoji: "🍓", color: "bg-[hsl(350,30%,92%)]", desc: "Сочная малина и лёгкая горчинка грейпфрута. 25г на 100мл кипятка." },
+  { name: "Облепиха-апельсин", type: "Чай · капсула 90г", price: "520 ₽", emoji: "🍊", color: "bg-[hsl(38,50%,92%)]", desc: "Солнечная облепиха с цедрой апельсина. Витаминный заряд в каждом глотке." },
+  { name: "Клюква-апельсин", type: "Чай · капсула 90г", price: "510 ₽", emoji: "🍊", color: "bg-[hsl(15,40%,92%)]", desc: "Терпкая клюква и сочный апельсин — классическое зимнее сочетание." },
+  { name: "Глинтвейн клюква-вишня", type: "Глинтвейн · капсула 90г", price: "560 ₽", emoji: "🍷", color: "bg-[hsl(345,35%,90%)]", desc: "Насыщенный согревающий глинтвейн из клюквы и вишни со специями." },
+  { name: "Чёрная смородина-апельсин", type: "Чай · капсула 90г", price: "490 ₽", emoji: "🫐", color: "bg-[hsl(280,20%,92%)]", desc: "Яркая смородина и свежий апельсин — насыщенный витаминами дуэт." },
+  { name: "Марокканский цитрусовый", type: "Чай со специями · капсула 90г", price: "540 ₽", emoji: "🌶️", color: "bg-[hsl(30,40%,91%)]", desc: "Цитрусовый купаж с восточными специями. Тёплый и пряный аромат Марокко." },
+];
+
+const LEMONADE_BASES = [
+  {
+    base: "Лайм-Мята",
+    emoji: "🍃",
+    color: "bg-[hsl(140,30%,91%)]",
+    badgeColor: "hsl(140,40%,35%)",
+    flavors: [
+      { name: "Ананас-Манго", emoji: "🍍" },
+      { name: "Манго-Маракуйя", emoji: "🥭" },
+      { name: "Дыня-Клубника", emoji: "🍈" },
+      { name: "Клубника-Манго", emoji: "🍓" },
+      { name: "Дыня-Маракуйя", emoji: "🍈" },
+    ],
+  },
+  {
+    base: "Грейпфрут-Лайм-Мята",
+    emoji: "🍋",
+    color: "bg-[hsl(55,45%,91%)]",
+    badgeColor: "hsl(38,55%,38%)",
+    flavors: [
+      { name: "Малина-Маракуйя", emoji: "🍓" },
+      { name: "Клубника-Крыжовник", emoji: "🍓" },
+      { name: "Малина-Каламондин", emoji: "🍓" },
+    ],
+  },
+  {
+    base: "Лайм-Базилик",
+    emoji: "🌿",
+    color: "bg-[hsl(100,28%,91%)]",
+    badgeColor: "hsl(100,38%,32%)",
+    flavors: [
+      { name: "Дыня-Ананас", emoji: "🍈" },
+      { name: "Малина-Грейпфрут", emoji: "🍓" },
+    ],
+  },
+];
+
+const CATALOG_SMOOTHIES = [
+  { name: "Пинаколада", type: "Смузи · дойпак", price: "590 ₽", emoji: "🥥", color: "bg-[hsl(48,40%,92%)]", desc: "Кокос, манго и ананас. Основа лайм-мята + кусочки фруктов." },
+  { name: "Тропический чилл", type: "Смузи · дойпак", price: "570 ₽", emoji: "🍓", color: "bg-[hsl(350,35%,91%)]", desc: "Клубника, маракуйя и манго. Взрыв тропических вкусов." },
+  { name: "Балийский трип", type: "Смузи · дойпак", price: "550 ₽", emoji: "🥭", color: "bg-[hsl(38,45%,92%)]", desc: "Манго и маракуйя — освежающий дуэт с острова Бали." },
+  { name: "Летний бриз", type: "Смузи · дойпак", price: "530 ₽", emoji: "🍉", color: "bg-[hsl(355,40%,92%)]", desc: "Манго и арбуз — сладкий летний бриз в каждом глотке." },
+  { name: "Манго шейк", type: "Смузи · дойпак", price: "510 ₽", emoji: "🥭", color: "bg-[hsl(40,55%,92%)]", desc: "Чистый манговый вкус — насыщенный, сладкий и солнечный." },
+];
 
 const CATALOG_TABS = [
   { id: "teas", label: "Чаи", emoji: "🍵" },
@@ -38,47 +73,45 @@ const CATALOG_TABS = [
 
 const RECIPES = [
   {
-    title: "Летний лимонад",
-    concentrate: "Брусника с мятой",
+    title: "Как заварить чай",
+    concentrate: "Капсула 90г",
+    emoji: "🍵",
+    time: "2 мин",
+    badge: "Чай",
+    badgeColor: "hsl(30,40%,88%)",
+    steps: [
+      "Открыть капсулу",
+      "Вылить содержимое в стакан",
+      "Залить кипятком: 25г на 100мл воды",
+      "Перемешать и наслаждаться",
+    ],
+  },
+  {
+    title: "Как приготовить лимонад",
+    concentrate: "Капсула 70г",
     emoji: "🍋",
-    time: "5 мин",
+    time: "3 мин",
+    badge: "Лимонад",
+    badgeColor: "hsl(55,50%,88%)",
     steps: [
-      "2 ст.л. концентрата в стакан",
-      "Добавить 200 мл минеральной воды",
-      "Лёд, долька лимона, веточка мяты",
+      "Открыть капсулу, добавить в стакан",
+      "Помять содержимое мадлером",
+      "Добавить газированную воду и лёд",
+      "Перемешать и подавать",
     ],
   },
   {
-    title: "Зимний глинтвейн",
-    concentrate: "Шиповник & имбирь",
-    emoji: "☕",
-    time: "10 мин",
-    steps: [
-      "3 ст.л. концентрата",
-      "Нагреть с 300 мл воды до 70°C",
-      "Добавить гвоздику и кардамон",
-    ],
-  },
-  {
-    title: "Смузи с утра",
-    concentrate: "Облепиха & апельсин",
+    title: "Как приготовить смузи",
+    concentrate: "Дойпак с zip-замком",
     emoji: "🥤",
     time: "3 мин",
+    badge: "Смузи",
+    badgeColor: "hsl(140,30%,88%)",
     steps: [
-      "2 ст.л. концентрата в блендер",
-      "Банан, 150 мл йогурта",
-      "Взбить и подавать сразу",
-    ],
-  },
-  {
-    title: "Вечерний чай",
-    concentrate: "Черника & лаванда",
-    emoji: "🫖",
-    time: "5 мин",
-    steps: [
-      "1 ст.л. концентрата в чашку",
-      "Заварить зелёным чаем",
-      "Мёд по вкусу, лепестки лаванды",
+      "Открыть дойпак, добавить 200мл воды",
+      "Перелить содержимое в блендер",
+      "Взбить до однородности",
+      "Перелить обратно в дойпак и взять с собой",
     ],
   },
 ];
@@ -279,15 +312,9 @@ export default function Index() {
             ))}
           </div>
 
-          {CATALOG[activeTab].length === 0 ? (
-            <div className="text-center py-16" style={{ color: "hsl(24,15%,55%)" }}>
-              <div className="text-5xl mb-4">🍋</div>
-              <p className="font-body text-lg">Скоро здесь появятся вкусные лимонады!</p>
-              <p className="font-body text-sm mt-2">Уточните ассортимент у менеджера.</p>
-            </div>
-          ) : (
+          {activeTab === "teas" && (
             <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-              {CATALOG[activeTab].map((item) => (
+              {CATALOG_TEAS.map((item) => (
                 <div key={item.name} className={`card-hover rounded-2xl overflow-hidden border border-border/40 ${item.color}`}>
                   <div className="p-6">
                     <div className="text-5xl mb-4">{item.emoji}</div>
@@ -295,15 +322,68 @@ export default function Index() {
                     <h3 className="font-display text-2xl font-semibold mb-2" style={{ color: "hsl(24,20%,18%)" }}>{item.name}</h3>
                     <p className="font-body text-sm leading-relaxed mb-4" style={{ color: "hsl(24,15%,45%)" }}>{item.desc}</p>
                     <div className="flex items-center justify-between">
-                      <div>
-                        <span className="font-display text-2xl font-semibold" style={{ color: "hsl(15,55%,42%)" }}>{item.price}</span>
-                        <span className="font-body text-xs ml-1" style={{ color: "hsl(24,15%,45%)" }}>/ {item.volume}</span>
+                      <span className="font-display text-2xl font-semibold" style={{ color: "hsl(15,55%,42%)" }}>{item.price}</span>
+                      <button onClick={() => scrollTo("order")} className="inline-flex items-center gap-1 text-sm font-body font-medium hover:underline" style={{ color: "hsl(15,55%,42%)" }}>
+                        Заказать <Icon name="ArrowRight" size={14} />
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          )}
+
+          {activeTab === "lemonades" && (
+            <div className="flex flex-col gap-10">
+              {LEMONADE_BASES.map((base) => (
+                <div key={base.base}>
+                  <div className="flex items-center gap-3 mb-5">
+                    <span className="text-2xl">{base.emoji}</span>
+                    <div>
+                      <span className="font-body text-xs uppercase tracking-widest" style={{ color: "hsl(15,55%,42%)" }}>Основа</span>
+                      <h3 className="font-display text-2xl font-semibold" style={{ color: "hsl(24,20%,18%)" }}>{base.base}</h3>
+                    </div>
+                    <span className="ml-auto font-body text-xs px-3 py-1 rounded-full" style={{ backgroundColor: "hsl(36,28%,97%)", color: "hsl(24,15%,45%)", border: "1px solid hsl(30,20%,82%)" }}>
+                      капсула 70г · с кусочками фруктов
+                    </span>
+                  </div>
+                  <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                    {base.flavors.map((flavor) => (
+                      <div key={flavor.name} className={`card-hover rounded-2xl border border-border/40 ${base.color}`}>
+                        <div className="p-5 flex items-center justify-between">
+                          <div className="flex items-center gap-3">
+                            <span className="text-3xl">{flavor.emoji}</span>
+                            <div>
+                              <div className="font-body text-xs mb-0.5" style={{ color: "hsl(24,15%,50%)" }}>
+                                {base.base}
+                              </div>
+                              <div className="font-display text-lg font-semibold" style={{ color: "hsl(24,20%,18%)" }}>{flavor.name}</div>
+                            </div>
+                          </div>
+                          <button onClick={() => scrollTo("order")} className="inline-flex items-center gap-1 text-sm font-body font-medium hover:underline shrink-0 ml-2" style={{ color: "hsl(15,55%,42%)" }}>
+                            Заказать <Icon name="ArrowRight" size={14} />
+                          </button>
+                        </div>
                       </div>
-                      <button
-                        onClick={() => scrollTo("order")}
-                        className="inline-flex items-center gap-1 text-sm font-body font-medium hover:underline"
-                        style={{ color: "hsl(15,55%,42%)" }}
-                      >
+                    ))}
+                  </div>
+                </div>
+              ))}
+            </div>
+          )}
+
+          {activeTab === "smoothies" && (
+            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+              {CATALOG_SMOOTHIES.map((item) => (
+                <div key={item.name} className={`card-hover rounded-2xl overflow-hidden border border-border/40 ${item.color}`}>
+                  <div className="p-6">
+                    <div className="text-5xl mb-4">{item.emoji}</div>
+                    <div className="font-body text-xs uppercase tracking-wide mb-1" style={{ color: "hsl(24,15%,45%)" }}>{item.type}</div>
+                    <h3 className="font-display text-2xl font-semibold mb-2" style={{ color: "hsl(24,20%,18%)" }}>{item.name}</h3>
+                    <p className="font-body text-sm leading-relaxed mb-4" style={{ color: "hsl(24,15%,45%)" }}>{item.desc}</p>
+                    <div className="flex items-center justify-between">
+                      <span className="font-display text-2xl font-semibold" style={{ color: "hsl(15,55%,42%)" }}>{item.price}</span>
+                      <button onClick={() => scrollTo("order")} className="inline-flex items-center gap-1 text-sm font-body font-medium hover:underline" style={{ color: "hsl(15,55%,42%)" }}>
                         Заказать <Icon name="ArrowRight" size={14} />
                       </button>
                     </div>
@@ -388,7 +468,7 @@ export default function Index() {
             <p className="font-body mt-3" style={{ color: "hsl(24,15%,45%)" }}>Несколько идей для вдохновения. Всё готовится за несколько минут.</p>
           </div>
 
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-6">
+          <div className="grid grid-cols-3 gap-3 mb-6 max-w-2xl mx-auto">
             {RECIPES.map((r, i) => (
               <button
                 key={r.title}
@@ -401,8 +481,8 @@ export default function Index() {
                 }}
               >
                 <div className="text-3xl mb-2">{r.emoji}</div>
-                <div className="font-semibold text-sm">{r.title}</div>
-                <div className="text-xs mt-1" style={{ color: activeRecipe === i ? "rgba(245,240,230,0.7)" : "hsl(24,15%,45%)" }}>{r.concentrate}</div>
+                <div className="font-semibold text-sm leading-snug">{r.title}</div>
+                <div className="text-xs mt-1.5 px-2 py-0.5 rounded-full inline-block" style={{ backgroundColor: activeRecipe === i ? "rgba(255,255,255,0.2)" : r.badgeColor, color: activeRecipe === i ? "hsl(36,28%,97%)" : "hsl(24,20%,30%)" }}>{r.badge}</div>
               </button>
             ))}
           </div>
@@ -411,15 +491,16 @@ export default function Index() {
             <div className="grid md:grid-cols-2">
               <div className="p-8 md:p-10">
                 <div className="text-5xl mb-4">{RECIPES[activeRecipe].emoji}</div>
+                <div className="inline-block font-body text-xs px-3 py-1 rounded-full mb-3" style={{ backgroundColor: RECIPES[activeRecipe].badgeColor, color: "hsl(24,20%,25%)" }}>{RECIPES[activeRecipe].badge}</div>
                 <h3 className="font-display text-3xl font-semibold mb-1" style={{ color: "hsl(24,20%,18%)" }}>{RECIPES[activeRecipe].title}</h3>
                 <p className="font-body text-sm mb-6" style={{ color: "hsl(15,55%,42%)" }}>
-                  Концентрат: {RECIPES[activeRecipe].concentrate} · {RECIPES[activeRecipe].time}
+                  {RECIPES[activeRecipe].concentrate} · {RECIPES[activeRecipe].time}
                 </p>
                 <div className="space-y-4">
-                  {RECIPES[activeRecipe].steps.map((step, i) => (
-                    <div key={i} className="flex gap-3 items-start">
+                  {RECIPES[activeRecipe].steps.map((step, idx) => (
+                    <div key={idx} className="flex gap-3 items-start">
                       <div className="w-7 h-7 rounded-full flex items-center justify-center flex-shrink-0 text-sm font-body font-semibold" style={{ backgroundColor: "hsl(15,45%,35%)", color: "hsl(36,28%,97%)" }}>
-                        {i + 1}
+                        {idx + 1}
                       </div>
                       <p className="font-body text-sm pt-1" style={{ color: "hsl(24,20%,18%)" }}>{step}</p>
                     </div>
