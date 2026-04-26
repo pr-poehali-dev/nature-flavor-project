@@ -4,43 +4,47 @@
 
 @layer base {
   :root {
-    --background: 36 28% 97%;
-    --foreground: 24 20% 18%;
+    --background: 45 35% 96%;
+    --foreground: 30 25% 15%;
 
-    --card: 36 25% 95%;
-    --card-foreground: 24 20% 18%;
+    --card: 44 40% 98%;
+    --card-foreground: 30 25% 15%;
 
-    --popover: 36 25% 95%;
-    --popover-foreground: 24 20% 18%;
+    --popover: 44 40% 98%;
+    --popover-foreground: 30 25% 15%;
 
-    --primary: 15 45% 35%;
-    --primary-foreground: 36 28% 97%;
+    --primary: 340 60% 45%;
+    --primary-foreground: 45 35% 96%;
 
-    --secondary: 30 35% 88%;
-    --secondary-foreground: 24 20% 18%;
+    --secondary: 48 70% 88%;
+    --secondary-foreground: 30 25% 15%;
 
-    --muted: 30 20% 90%;
-    --muted-foreground: 24 15% 45%;
+    --muted: 42 30% 90%;
+    --muted-foreground: 30 18% 48%;
 
-    --accent: 350 40% 45%;
-    --accent-foreground: 36 28% 97%;
+    --accent: 28 85% 55%;
+    --accent-foreground: 45 35% 96%;
 
     --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 36 28% 97%;
+    --destructive-foreground: 45 35% 96%;
 
-    --border: 30 20% 82%;
-    --input: 30 20% 82%;
-    --ring: 15 45% 35%;
+    --border: 42 25% 84%;
+    --input: 42 25% 84%;
+    --ring: 340 60% 45%;
 
-    --radius: 0.75rem;
+    --radius: 1rem;
 
-    /* Custom brand colors */
-    --earth: 24 30% 28%;
-    --terra: 15 55% 42%;
-    --berry: 350 48% 40%;
-    --honey: 38 80% 58%;
-    --cream: 40 50% 95%;
-    --sage: 80 18% 50%;
+    /* Brand palette */
+    --sun: 48 92% 60%;
+    --sun-light: 50 95% 88%;
+    --berry: 340 62% 45%;
+    --berry-light: 340 55% 92%;
+    --citrus: 28 90% 55%;
+    --citrus-light: 30 90% 92%;
+    --sage: 95 22% 48%;
+    --sage-light: 95 28% 92%;
+    --cream: 44 50% 97%;
+    --dark: 30 25% 14%;
   }
 }
 
@@ -71,59 +75,13 @@
     font-family: "Golos Text", sans-serif;
   }
 
-  .text-earth {
-    color: hsl(var(--earth));
-  }
-  .text-terra {
-    color: hsl(var(--terra));
-  }
-  .text-berry {
-    color: hsl(var(--berry));
-  }
-  .text-honey {
-    color: hsl(var(--honey));
-  }
-  .text-sage {
-    color: hsl(var(--sage));
-  }
-
-  .bg-earth {
-    background-color: hsl(var(--earth));
-  }
-  .bg-terra {
-    background-color: hsl(var(--terra));
-  }
-  .bg-berry {
-    background-color: hsl(var(--berry));
-  }
-  .bg-honey {
-    background-color: hsl(var(--honey));
-  }
-  .bg-cream {
-    background-color: hsl(var(--cream));
-  }
-  .bg-sage {
-    background-color: hsl(var(--sage));
-  }
-
-  .texture-grain {
-    position: relative;
-  }
-  .texture-grain::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
-    pointer-events: none;
-    z-index: 1;
-  }
-
+  /* Nav */
   .nav-link {
     position: relative;
     font-family: "Golos Text", sans-serif;
     font-size: 0.875rem;
     font-weight: 500;
-    color: hsl(var(--earth));
+    color: hsl(var(--dark));
     transition: color 0.2s;
   }
   .nav-link::after {
@@ -132,21 +90,22 @@
     bottom: -2px;
     left: 0;
     width: 0;
-    height: 1px;
-    background: hsl(var(--terra));
+    height: 2px;
+    background: hsl(var(--berry));
+    border-radius: 2px;
     transition: width 0.3s ease;
   }
   .nav-link:hover {
-    color: hsl(var(--terra));
+    color: hsl(var(--berry));
   }
   .nav-link:hover::after {
     width: 100%;
   }
 
+  /* Animations */
   .animate-fade-up {
     animation: fadeUp 0.7s ease forwards;
   }
-
   @keyframes fadeUp {
     from {
       opacity: 0;
@@ -157,7 +116,6 @@
       transform: translateY(0);
     }
   }
-
   .delay-100 {
     animation-delay: 0.1s;
   }
@@ -174,16 +132,18 @@
     animation-delay: 0.5s;
   }
 
+  /* Cards */
   .card-hover {
     transition:
       transform 0.3s ease,
       box-shadow 0.3s ease;
   }
   .card-hover:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 20px 40px rgba(80, 40, 20, 0.12);
+    transform: translateY(-5px);
+    box-shadow: 0 24px 48px rgba(100, 30, 50, 0.13);
   }
 
+  /* Divider */
   .divider-organic {
     border: none;
     height: 1px;
@@ -193,5 +153,20 @@
       hsl(var(--border)),
       transparent
     );
+  }
+
+  /* Arch shape */
+  .arch-top {
+    border-radius: 50% 50% 0 0 / 40% 40% 0 0;
+  }
+
+  /* Grain texture overlay */
+  .texture-grain::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.035'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 1;
   }
 }

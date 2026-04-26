@@ -1,6 +1,10 @@
 import { useState } from "react";
 import Icon from "@/components/ui/icon";
 
+const IMG_HERO = "https://cdn.poehali.dev/projects/32ce1ba6-2d08-4502-a6d8-df9c23186132/files/a958ae2d-f930-4685-a342-6f70394f016b.jpg";
+const IMG_FRUITS = "https://cdn.poehali.dev/projects/32ce1ba6-2d08-4502-a6d8-df9c23186132/files/c45cd9e7-8cbf-411f-a26f-f45d80ea4f98.jpg";
+const IMG_TERRACE = "https://cdn.poehali.dev/projects/32ce1ba6-2d08-4502-a6d8-df9c23186132/files/30f11bae-0215-42f6-9a75-7751a59e2e4a.jpg";
+
 const NAV_ITEMS = [
   { id: "home", label: "Главная" },
   { id: "products", label: "О продукции" },
@@ -12,20 +16,20 @@ const NAV_ITEMS = [
 ];
 
 const CATALOG_TEAS = [
-  { name: "Малина-грейпфрут", type: "Чай · капсула 90г", emoji: "🍓", color: "bg-[hsl(350,30%,92%)]", desc: "Сочная малина и лёгкая горчинка грейпфрута. 25г на 100мл кипятка." },
-  { name: "Облепиха-апельсин", type: "Чай · капсула 90г", emoji: "🍊", color: "bg-[hsl(38,50%,92%)]", desc: "Солнечная облепиха с цедрой апельсина. Витаминный заряд в каждом глотке." },
-  { name: "Клюква-апельсин", type: "Чай · капсула 90г", emoji: "🍊", color: "bg-[hsl(15,40%,92%)]", desc: "Терпкая клюква и сочный апельсин — классическое зимнее сочетание." },
-  { name: "Глинтвейн клюква-вишня", type: "Глинтвейн · капсула 90г", emoji: "🍷", color: "bg-[hsl(345,35%,90%)]", desc: "Насыщенный согревающий глинтвейн из клюквы и вишни со специями." },
-  { name: "Чёрная смородина-апельсин", type: "Чай · капсула 90г", emoji: "🫐", color: "bg-[hsl(280,20%,92%)]", desc: "Яркая смородина и свежий апельсин — насыщенный витаминами дуэт." },
-  { name: "Марокканский цитрусовый", type: "Чай со специями · капсула 90г", emoji: "🌶️", color: "bg-[hsl(30,40%,91%)]", desc: "Цитрусовый купаж с восточными специями. Тёплый и пряный аромат Марокко." },
+  { name: "Малина-грейпфрут", type: "Чай · капсула 90г", emoji: "🍓", accent: "hsl(340,55%,92%)", dot: "hsl(340,62%,45%)", desc: "Сочная малина и лёгкая горчинка грейпфрута. Освежающий и витаминный." },
+  { name: "Облепиха-апельсин", type: "Чай · капсула 90г", emoji: "🍊", accent: "hsl(38,80%,92%)", dot: "hsl(28,90%,55%)", desc: "Солнечная облепиха с цедрой апельсина. Витаминный заряд в каждом глотке." },
+  { name: "Клюква-апельсин", type: "Чай · капсула 90г", emoji: "🍊", accent: "hsl(15,55%,92%)", dot: "hsl(15,70%,45%)", desc: "Терпкая клюква и сочный апельсин — классическое зимнее сочетание." },
+  { name: "Глинтвейн клюква-вишня", type: "Глинтвейн · капсула 90г", emoji: "🍷", accent: "hsl(345,45%,92%)", dot: "hsl(345,60%,40%)", desc: "Насыщенный согревающий глинтвейн из клюквы и вишни со специями." },
+  { name: "Чёрная смородина-апельсин", type: "Чай · капсула 90г", emoji: "🫐", accent: "hsl(275,28%,92%)", dot: "hsl(275,40%,45%)", desc: "Яркая смородина и свежий апельсин — насыщенный витаминами дуэт." },
+  { name: "Марокканский цитрусовый", type: "Чай со специями · 90г", emoji: "🌶️", accent: "hsl(30,55%,91%)", dot: "hsl(28,90%,50%)", desc: "Цитрусовый купаж с восточными специями. Тёплый и пряный аромат Марокко." },
 ];
 
 const LEMONADE_BASES = [
   {
     base: "Лайм-Мята",
     emoji: "🍃",
-    color: "bg-[hsl(140,30%,91%)]",
-    badgeColor: "hsl(140,40%,35%)",
+    accent: "hsl(95,28%,91%)",
+    dot: "hsl(95,38%,38%)",
     flavors: [
       { name: "Ананас-Манго", emoji: "🍍" },
       { name: "Манго-Маракуйя", emoji: "🥭" },
@@ -37,8 +41,8 @@ const LEMONADE_BASES = [
   {
     base: "Грейпфрут-Лайм-Мята",
     emoji: "🍋",
-    color: "bg-[hsl(55,45%,91%)]",
-    badgeColor: "hsl(38,55%,38%)",
+    accent: "hsl(50,75%,91%)",
+    dot: "hsl(48,85%,48%)",
     flavors: [
       { name: "Малина-Маракуйя", emoji: "🍓" },
       { name: "Клубника-Крыжовник", emoji: "🍓" },
@@ -48,8 +52,8 @@ const LEMONADE_BASES = [
   {
     base: "Лайм-Базилик",
     emoji: "🌿",
-    color: "bg-[hsl(100,28%,91%)]",
-    badgeColor: "hsl(100,38%,32%)",
+    accent: "hsl(100,25%,91%)",
+    dot: "hsl(95,38%,36%)",
     flavors: [
       { name: "Дыня-Ананас", emoji: "🍈" },
       { name: "Малина-Грейпфрут", emoji: "🍓" },
@@ -57,18 +61,18 @@ const LEMONADE_BASES = [
   },
 ];
 
-const CATALOG_SMOOTHIES = [
-  { name: "Пинаколада", type: "Смузи · дойпак", emoji: "🥥", color: "bg-[hsl(48,40%,92%)]", desc: "Кокос, манго и ананас. Основа лайм-мята + кусочки фруктов." },
-  { name: "Тропический чилл", type: "Смузи · дойпак", emoji: "🍓", color: "bg-[hsl(350,35%,91%)]", desc: "Клубника, маракуйя и манго. Взрыв тропических вкусов." },
-  { name: "Балийский трип", type: "Смузи · дойпак", emoji: "🥭", color: "bg-[hsl(38,45%,92%)]", desc: "Манго и маракуйя — освежающий дуэт с острова Бали." },
-  { name: "Летний бриз", type: "Смузи · дойпак", emoji: "🍉", color: "bg-[hsl(355,40%,92%)]", desc: "Манго и арбуз — сладкий летний бриз в каждом глотке." },
-  { name: "Манго шейк", type: "Смузи · дойпак", emoji: "🥭", color: "bg-[hsl(40,55%,92%)]", desc: "Чистый манговый вкус — насыщенный, сладкий и солнечный." },
-];
-
 const CATALOG_TABS = [
   { id: "teas", label: "Чаи", emoji: "🍵" },
   { id: "lemonades", label: "Лимонады", emoji: "🍋" },
   { id: "smoothies", label: "Смузи", emoji: "🥤" },
+];
+
+const CATALOG_SMOOTHIES = [
+  { name: "Пинаколада", type: "Смузи · дойпак", emoji: "🥥", accent: "hsl(48,75%,92%)", dot: "hsl(38,85%,50%)", desc: "Кокос, манго и ананас. Основа лайм-мята + кусочки фруктов." },
+  { name: "Тропический чилл", type: "Смузи · дойпак", emoji: "🍓", accent: "hsl(345,50%,92%)", dot: "hsl(340,62%,45%)", desc: "Клубника, маракуйя и манго. Взрыв тропических вкусов." },
+  { name: "Балийский трип", type: "Смузи · дойпак", emoji: "🥭", accent: "hsl(35,70%,92%)", dot: "hsl(28,90%,52%)", desc: "Манго и маракуйя — освежающий дуэт с острова Бали." },
+  { name: "Летний бриз", type: "Смузи · дойпак", emoji: "🍉", accent: "hsl(355,50%,93%)", dot: "hsl(350,65%,48%)", desc: "Манго и арбуз — сладкий летний бриз в каждом глотке." },
+  { name: "Манго шейк", type: "Смузи · дойпак", emoji: "🥭", accent: "hsl(40,70%,92%)", dot: "hsl(35,88%,52%)", desc: "Чистый манговый вкус — насыщенный, сладкий и солнечный." },
 ];
 
 const RECIPES = [
@@ -78,13 +82,8 @@ const RECIPES = [
     emoji: "🍵",
     time: "2 мин",
     badge: "Чай",
-    badgeColor: "hsl(30,40%,88%)",
-    steps: [
-      "Открыть капсулу",
-      "Вылить содержимое в стакан",
-      "Залить кипятком: 25г на 100мл воды",
-      "Перемешать и наслаждаться",
-    ],
+    accent: "hsl(30,60%,90%)",
+    steps: ["Открыть капсулу", "Вылить содержимое в стакан", "Залить кипятком: 25г на 100мл воды", "Перемешать и наслаждаться"],
   },
   {
     title: "Как приготовить лимонад",
@@ -92,13 +91,8 @@ const RECIPES = [
     emoji: "🍋",
     time: "3 мин",
     badge: "Лимонад",
-    badgeColor: "hsl(55,50%,88%)",
-    steps: [
-      "Открыть капсулу, добавить в стакан",
-      "Помять содержимое мадлером",
-      "Добавить газированную воду и лёд",
-      "Перемешать и подавать",
-    ],
+    accent: "hsl(50,80%,88%)",
+    steps: ["Открыть капсулу, добавить в стакан", "Помять содержимое мадлером", "Добавить газированную воду и лёд", "Перемешать и подавать"],
   },
   {
     title: "Как приготовить смузи",
@@ -106,13 +100,8 @@ const RECIPES = [
     emoji: "🥤",
     time: "3 мин",
     badge: "Смузи",
-    badgeColor: "hsl(140,30%,88%)",
-    steps: [
-      "Открыть дойпак, добавить 200мл воды",
-      "Перелить содержимое в блендер",
-      "Взбить до однородности",
-      "Перелить обратно в дойпак и взять с собой",
-    ],
+    accent: "hsl(95,35%,88%)",
+    steps: ["Открыть дойпак, добавить 200мл воды", "Перелить содержимое в блендер", "Взбить до однородности", "Перелить обратно в дойпак и взять с собой"],
   },
 ];
 
@@ -122,6 +111,16 @@ const STEPS = [
   { icon: "Truck", title: "Получите доставку", desc: "Доставляем по всей России за 3–7 дней. Самовывоз из Москвы." },
   { icon: "Leaf", title: "Наслаждайтесь", desc: "Разведите с водой по инструкции и откройте вкус живой природы." },
 ];
+
+const BERRY = "hsl(340,62%,45%)";
+const BERRY_LIGHT = "hsl(340,55%,93%)";
+const SUN = "hsl(48,92%,60%)";
+const CITRUS = "hsl(28,90%,55%)";
+const DARK = "hsl(30,25%,14%)";
+const CREAM = "hsl(44,50%,97%)";
+const MUTED = "hsl(30,18%,48%)";
+const BG = "hsl(45,35%,96%)";
+const BORDER = "hsl(42,25%,84%)";
 
 export default function Index() {
   const [activeSection, setActiveSection] = useState("home");
@@ -137,165 +136,176 @@ export default function Index() {
   };
 
   return (
-    <div className="min-h-screen" style={{ backgroundColor: "hsl(36,28%,97%)" }}>
-      {/* NAV */}
-      <header className="sticky top-0 z-50 border-b border-border/60" style={{ backgroundColor: "hsl(36,28%,97%)", backdropFilter: "blur(8px)" }}>
-        <div className="container mx-auto px-4 flex items-center justify-between h-16">
-          <div className="flex items-center gap-2 cursor-pointer" onClick={() => scrollTo("home")}>
-            <span className="text-2xl">🌿</span>
-            <span className="font-display text-2xl font-semibold" style={{ color: "hsl(24,20%,18%)" }}>Море Ягод</span>
-          </div>
+    <div className="min-h-screen" style={{ backgroundColor: BG }}>
 
-          <nav className="hidden md:flex items-center gap-6">
+      {/* ── NAV ── */}
+      <header className="sticky top-0 z-50 border-b" style={{ backgroundColor: "rgba(252,248,240,0.96)", backdropFilter: "blur(12px)", borderColor: BORDER }}>
+        <div className="container mx-auto px-4 flex items-center justify-between h-16">
+          <button className="flex items-center gap-2.5" onClick={() => scrollTo("home")}>
+            <span className="text-2xl">🍓</span>
+            <span className="font-display text-2xl font-semibold tracking-tight" style={{ color: DARK }}>Море Ягод</span>
+          </button>
+
+          <nav className="hidden md:flex items-center gap-7">
             {NAV_ITEMS.map((item) => (
               <button
                 key={item.id}
                 onClick={() => scrollTo(item.id)}
                 className="nav-link"
-                style={{ color: activeSection === item.id ? "hsl(15,55%,42%)" : undefined }}
+                style={{ color: activeSection === item.id ? BERRY : undefined }}
               >
                 {item.label}
               </button>
             ))}
           </nav>
 
-          <button
-            className="md:hidden p-2 rounded-lg"
-            onClick={() => setMobileOpen(!mobileOpen)}
-            style={{ color: "hsl(24,20%,18%)" }}
-          >
+          <button className="md:hidden p-2 rounded-xl" onClick={() => setMobileOpen(!mobileOpen)} style={{ color: DARK }}>
             <Icon name={mobileOpen ? "X" : "Menu"} size={22} />
           </button>
         </div>
 
         {mobileOpen && (
-          <div className="md:hidden border-t border-border/40 px-4 py-4 flex flex-col gap-3" style={{ backgroundColor: "hsl(36,28%,97%)" }}>
+          <div className="md:hidden border-t px-4 py-4 flex flex-col gap-3" style={{ backgroundColor: CREAM, borderColor: BORDER }}>
             {NAV_ITEMS.map((item) => (
-              <button
-                key={item.id}
-                onClick={() => scrollTo(item.id)}
-                className="text-left nav-link py-1"
-              >
-                {item.label}
-              </button>
+              <button key={item.id} onClick={() => scrollTo(item.id)} className="text-left nav-link py-1">{item.label}</button>
             ))}
           </div>
         )}
       </header>
 
-      {/* HERO */}
-      <section id="home" className="relative overflow-hidden">
-        <div className="absolute inset-0 pointer-events-none">
-          <div className="absolute top-0 right-0 w-96 h-96 rounded-full opacity-20 blur-3xl" style={{ background: "hsl(15,55%,60%)" }} />
-          <div className="absolute bottom-0 left-0 w-80 h-80 rounded-full opacity-15 blur-3xl" style={{ background: "hsl(350,48%,50%)" }} />
+      {/* ── HERO ── */}
+      <section id="home" className="relative overflow-hidden" style={{ backgroundColor: BG }}>
+        {/* background blobs */}
+        <div className="absolute inset-0 pointer-events-none overflow-hidden">
+          <div className="absolute -top-20 -right-20 w-[500px] h-[500px] rounded-full opacity-25 blur-3xl" style={{ background: SUN }} />
+          <div className="absolute bottom-0 -left-20 w-96 h-96 rounded-full opacity-20 blur-3xl" style={{ background: BERRY }} />
         </div>
 
-        <div className="container mx-auto px-4 py-16 md:py-24 grid md:grid-cols-2 gap-12 items-center relative">
-          <div>
-            <div className="inline-flex items-center gap-2 text-sm font-body px-3 py-1 rounded-full mb-6 animate-fade-up" style={{ backgroundColor: "hsl(15,40%,92%)", color: "hsl(15,55%,42%)" }}>
-              <span>🌿</span> Натуральные концентраты без консервантов
+        <div className="container mx-auto px-4 pt-14 pb-0 grid md:grid-cols-2 gap-10 items-end relative">
+          {/* text col */}
+          <div className="pb-16 md:pb-20">
+            <div className="inline-flex items-center gap-2 text-xs font-body font-medium px-4 py-1.5 rounded-full mb-7 animate-fade-up" style={{ backgroundColor: BERRY_LIGHT, color: BERRY }}>
+              🌿 Натуральные концентраты без консервантов
             </div>
-            <h1 className="font-display text-5xl md:text-7xl font-semibold leading-tight mb-6 animate-fade-up delay-100" style={{ color: "hsl(24,20%,18%)" }}>
-              Вкус, которым<br />
-              <em className="not-italic" style={{ color: "hsl(15,55%,42%)" }}>делится</em><br />
-              природа
+
+            <h1 className="font-display font-semibold leading-[1.05] mb-7 animate-fade-up delay-100" style={{ fontSize: "clamp(3rem,7vw,5.5rem)", color: DARK }}>
+              Вкус,{" "}
+              <em className="not-italic" style={{ color: BERRY }}>которым</em>
+              <br />делится<br />
+              <em className="not-italic" style={{ color: CITRUS }}>природа</em>
             </h1>
-            <p className="font-body text-lg leading-relaxed mb-8 animate-fade-up delay-200" style={{ color: "hsl(24,15%,45%)" }}>
-              Добро пожаловать в «Море Ягод» — место, где свежесть природы и здоровье встречаются в каждом глотке! Мы создаём натуральные лимонады, смузи и чаи без термической обработки, чтобы сохранить максимум витаминов, ароматов и вкуса. Наши напитки — это ода свежести, бодрости и натуральному удовольствию. Наслаждайтесь яркими ягодными нотами, освежающими цитрусами и насыщенными чайными ароматами — всё без консервантов и искусственных ингредиентов. «Море Ягод» — ваш путь к натуральной энергии и вкусному отдыху!
+
+            <p className="font-body text-base leading-relaxed mb-9 max-w-md animate-fade-up delay-200" style={{ color: MUTED }}>
+              Добро пожаловать в «Море Ягод» — место, где свежесть природы и здоровье встречаются в каждом глотке! Мы создаём натуральные лимонады, смузи и чаи без термической обработки, чтобы сохранить максимум витаминов, ароматов и вкуса.
             </p>
+
             <div className="flex flex-wrap gap-3 animate-fade-up delay-300">
               <button
                 onClick={() => scrollTo("catalog")}
-                className="inline-flex items-center gap-2 px-6 py-3 rounded-full font-body font-medium transition-all hover:opacity-90 hover:scale-105"
-                style={{ backgroundColor: "hsl(15,45%,35%)", color: "hsl(36,28%,97%)" }}
+                className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full font-body font-semibold transition-all hover:opacity-90 hover:scale-105"
+                style={{ backgroundColor: BERRY, color: CREAM }}
               >
                 Смотреть каталог
                 <Icon name="ArrowRight" size={18} />
               </button>
               <button
                 onClick={() => scrollTo("recipes")}
-                className="inline-flex items-center gap-2 px-6 py-3 rounded-full font-body font-medium border transition-all hover:bg-[hsl(30,35%,88%)]"
-                style={{ borderColor: "hsl(30,20%,82%)", color: "hsl(24,20%,18%)" }}
+                className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full font-body font-semibold border transition-all hover:bg-[hsl(42,30%,90%)]"
+                style={{ borderColor: BORDER, color: DARK }}
               >
                 Рецепты напитков
               </button>
             </div>
 
-            <div className="mt-12 flex gap-8 animate-fade-up delay-400">
+            <div className="mt-12 flex gap-10 animate-fade-up delay-400">
               {[["15+", "сортов"], ["100%", "натурально"], ["1:20", "разведение"]].map(([val, label]) => (
                 <div key={label}>
-                  <div className="font-display text-3xl font-semibold" style={{ color: "hsl(15,55%,42%)" }}>{val}</div>
-                  <div className="font-body text-sm" style={{ color: "hsl(24,15%,45%)" }}>{label}</div>
+                  <div className="font-display text-4xl font-semibold" style={{ color: BERRY }}>{val}</div>
+                  <div className="font-body text-sm mt-0.5" style={{ color: MUTED }}>{label}</div>
                 </div>
               ))}
             </div>
           </div>
 
-          <div className="relative animate-fade-up delay-300">
-            <div className="relative rounded-3xl overflow-hidden aspect-[4/5] shadow-2xl">
-              <img
-                src="https://cdn.poehali.dev/projects/32ce1ba6-2d08-4502-a6d8-df9c23186132/files/b25a578e-185a-4784-a297-efe2df2f784e.jpg"
-                alt="Натуральные концентраты Живица"
-                className="w-full h-full object-cover"
-              />
-              <div className="absolute inset-0" style={{ background: "linear-gradient(to top, rgba(40,20,10,0.4) 0%, transparent 50%)" }} />
+          {/* image col — arch-shaped photo */}
+          <div className="relative flex justify-center animate-fade-up delay-300">
+            <div
+              className="relative w-full max-w-sm overflow-hidden shadow-2xl"
+              style={{ borderRadius: "50% 50% 0 0 / 30% 30% 0 0", aspectRatio: "4/5" }}
+            >
+              <img src={IMG_HERO} alt="Ягодный рынок" className="w-full h-full object-cover" />
+              <div className="absolute inset-0" style={{ background: "linear-gradient(to top, rgba(20,8,5,0.35) 0%, transparent 55%)" }} />
             </div>
-            <div className="absolute -bottom-4 -left-4 bg-white rounded-2xl p-4 shadow-lg">
-              <div className="font-display text-2xl">🍓</div>
-              <div className="font-body text-xs mt-1" style={{ color: "hsl(24,15%,45%)" }}>Собрано вручную</div>
+
+            {/* floating badge */}
+            <div className="absolute bottom-6 -left-4 rounded-2xl px-4 py-3 shadow-xl" style={{ backgroundColor: CREAM }}>
+              <div className="font-display text-3xl">🍓</div>
+              <div className="font-body text-xs mt-0.5" style={{ color: MUTED }}>Собрано вручную</div>
+            </div>
+
+            {/* sun badge */}
+            <div className="absolute top-8 -right-2 w-16 h-16 rounded-full flex items-center justify-center shadow-lg" style={{ backgroundColor: SUN }}>
+              <span className="text-2xl">✨</span>
             </div>
           </div>
         </div>
+
+        {/* wave divider */}
+        <div className="w-full overflow-hidden mt-[-2px]" style={{ lineHeight: 0 }}>
+          <svg viewBox="0 0 1440 60" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full">
+            <path d="M0 60 C360 0 1080 60 1440 0 L1440 60 Z" fill="hsl(42,30%,90%)" />
+          </svg>
+        </div>
       </section>
 
-      <hr className="divider-organic mx-8" />
-
-      {/* О ПРОДУКЦИИ */}
-      <section id="products" className="py-16 md:py-24">
+      {/* ── О ПРОДУКЦИИ ── */}
+      <section id="products" className="py-16 md:py-24" style={{ backgroundColor: "hsl(42,30%,90%)" }}>
         <div className="container mx-auto px-4">
           <div className="text-center mb-14">
-            <span className="font-body text-sm uppercase tracking-widest" style={{ color: "hsl(15,55%,42%)" }}>О продукции</span>
-            <h2 className="font-display text-4xl md:text-5xl font-semibold mt-2" style={{ color: "hsl(24,20%,18%)" }}>Почему наши концентраты</h2>
+            <span className="font-body text-xs uppercase tracking-[0.18em] font-semibold" style={{ color: BERRY }}>О продукции</span>
+            <h2 className="font-display text-4xl md:text-5xl font-semibold mt-2" style={{ color: DARK }}>Почему наши концентраты</h2>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-6">
+          <div className="grid md:grid-cols-3 gap-5">
             {[
-              { icon: "Leaf", title: "Без химии", desc: "Ни консервантов, ни ароматизаторов, ни красителей. Только ягоды, вода и немного сахара для сохранения." },
-              { icon: "Droplets", title: "Максимум вкуса", desc: "Технология щадящего уваривания сохраняет витамины и ароматику. Концентрация 1:20 — из 500 мл получается 10 литров напитка." },
-              { icon: "Mountain", title: "Дикорастущие ягоды", desc: "Собираем в экологически чистых районах Сибири и Алтая. Без пестицидов и агрохимии — как это было всегда." },
-              { icon: "ThermometerSun", title: "Горячее и холодное", desc: "Разводите с холодной водой для освежающего лимонада или с горячей для согревающего напитка и чая." },
-              { icon: "Package", title: "Долгое хранение", desc: "Стеклянная тара и натуральные антиоксиданты — срок хранения 24 месяца до вскрытия, 30 дней в холодильнике." },
-              { icon: "Heart", title: "Для всей семьи", desc: "Подходит детям от 3 лет. Есть варианты без сахара для диабетиков и тех, кто следит за весом." },
+              { icon: "Leaf", title: "Без химии", desc: "Ни консервантов, ни ароматизаторов, ни красителей. Только ягоды, вода и немного сахара.", bg: BERRY_LIGHT, ic: BERRY },
+              { icon: "Droplets", title: "Максимум вкуса", desc: "Технология щадящего уваривания сохраняет витамины. Концентрация 1:20 — из 500 мл получается 10 л напитка.", bg: "hsl(50,88%,92%)", ic: "hsl(40,88%,45%)" },
+              { icon: "Mountain", title: "Дикорастущие ягоды", desc: "Собираем в экологически чистых районах Сибири и Алтая. Без пестицидов — как это было всегда.", bg: "hsl(95,32%,91%)", ic: "hsl(95,42%,38%)" },
+              { icon: "ThermometerSun", title: "Горячее и холодное", desc: "Разводите с холодной водой для лимонада или с горячей для чая — одинаково вкусно.", bg: "hsl(20,60%,92%)", ic: CITRUS },
+              { icon: "Package", title: "Долгое хранение", desc: "Срок хранения 24 месяца до вскрытия, 30 дней в холодильнике — без потери качества.", bg: "hsl(270,25%,92%)", ic: "hsl(270,38%,45%)" },
+              { icon: "Heart", title: "Для всей семьи", desc: "Подходит детям от 3 лет. Есть варианты без сахара для диабетиков и тех, кто следит за весом.", bg: BERRY_LIGHT, ic: BERRY },
             ].map((item) => (
-              <div
-                key={item.title}
-                className="card-hover rounded-2xl p-6 border"
-                style={{ backgroundColor: "hsl(36,25%,96%)", borderColor: "hsl(30,20%,88%)" }}
-              >
-                <div className="w-10 h-10 rounded-xl flex items-center justify-center mb-4" style={{ backgroundColor: "hsl(15,40%,92%)" }}>
-                  <Icon name={item.icon} size={20} style={{ color: "hsl(15,55%,42%)" }} />
+              <div key={item.title} className="card-hover rounded-3xl p-7 border" style={{ backgroundColor: CREAM, borderColor: "transparent" }}>
+                <div className="w-12 h-12 rounded-2xl flex items-center justify-center mb-5" style={{ backgroundColor: item.bg }}>
+                  <Icon name={item.icon} size={22} style={{ color: item.ic }} />
                 </div>
-                <h3 className="font-display text-xl font-semibold mb-2" style={{ color: "hsl(24,20%,18%)" }}>{item.title}</h3>
-                <p className="font-body text-sm leading-relaxed" style={{ color: "hsl(24,15%,45%)" }}>{item.desc}</p>
+                <h3 className="font-display text-xl font-semibold mb-2" style={{ color: DARK }}>{item.title}</h3>
+                <p className="font-body text-sm leading-relaxed" style={{ color: MUTED }}>{item.desc}</p>
               </div>
             ))}
           </div>
         </div>
+
+        {/* wave */}
+        <div className="w-full overflow-hidden mt-12" style={{ lineHeight: 0 }}>
+          <svg viewBox="0 0 1440 60" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full">
+            <path d="M0 0 C360 60 1080 0 1440 60 L1440 0 Z" fill={BG} />
+          </svg>
+        </div>
       </section>
 
-      <hr className="divider-organic mx-8" />
-
-      {/* КАТАЛОГ */}
-      <section id="catalog" className="py-16 md:py-24" style={{ backgroundColor: "hsl(30,20%,93%)" }}>
+      {/* ── КАТАЛОГ ── */}
+      <section id="catalog" className="py-16 md:py-24" style={{ backgroundColor: BG }}>
         <div className="container mx-auto px-4">
           <div className="text-center mb-14">
-            <span className="font-body text-sm uppercase tracking-widest" style={{ color: "hsl(15,55%,42%)" }}>Каталог</span>
-            <h2 className="font-display text-4xl md:text-5xl font-semibold mt-2" style={{ color: "hsl(24,20%,18%)" }}>Наши концентраты</h2>
-            <p className="font-body mt-3 max-w-xl mx-auto" style={{ color: "hsl(24,15%,45%)" }}>
-              Каждый вкус — это отдельная история из леса. Выбирайте по настроению.
+            <span className="font-body text-xs uppercase tracking-[0.18em] font-semibold" style={{ color: BERRY }}>Каталог</span>
+            <h2 className="font-display text-4xl md:text-5xl font-semibold mt-2" style={{ color: DARK }}>Наши концентраты</h2>
+            <p className="font-body mt-3 max-w-xl mx-auto" style={{ color: MUTED }}>
+              Каждый вкус — отдельная история из леса. Выбирайте по настроению.
             </p>
           </div>
 
+          {/* Tabs */}
           <div className="flex justify-center gap-2 mb-10 flex-wrap">
             {CATALOG_TABS.map((tab) => (
               <button
@@ -303,25 +313,28 @@ export default function Index() {
                 onClick={() => setActiveTab(tab.id)}
                 className="inline-flex items-center gap-2 px-6 py-2.5 rounded-full font-body font-medium transition-all"
                 style={activeTab === tab.id
-                  ? { backgroundColor: "hsl(15,45%,35%)", color: "hsl(36,28%,97%)" }
-                  : { backgroundColor: "hsl(36,28%,97%)", color: "hsl(24,20%,18%)", border: "1px solid hsl(30,20%,82%)" }
+                  ? { backgroundColor: BERRY, color: CREAM, boxShadow: "0 4px 18px rgba(180,40,80,0.28)" }
+                  : { backgroundColor: CREAM, color: DARK, border: `1px solid ${BORDER}` }
                 }
               >
-                <span>{tab.emoji}</span> {tab.label}
+                <span>{tab.emoji}</span>{tab.label}
               </button>
             ))}
           </div>
 
+          {/* Teas */}
           {activeTab === "teas" && (
-            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
               {CATALOG_TEAS.map((item) => (
-                <div key={item.name} className={`card-hover rounded-2xl overflow-hidden border border-border/40 ${item.color}`}>
-                  <div className="p-6">
+                <div key={item.name} className="card-hover rounded-3xl overflow-hidden border" style={{ backgroundColor: item.accent, borderColor: "transparent" }}>
+                  <div className="p-7">
                     <div className="text-5xl mb-4">{item.emoji}</div>
-                    <div className="font-body text-xs uppercase tracking-wide mb-1" style={{ color: "hsl(24,15%,45%)" }}>{item.type}</div>
-                    <h3 className="font-display text-2xl font-semibold mb-2" style={{ color: "hsl(24,20%,18%)" }}>{item.name}</h3>
-                    <p className="font-body text-sm leading-relaxed mb-4" style={{ color: "hsl(24,15%,45%)" }}>{item.desc}</p>
-                    <button onClick={() => scrollTo("order")} className="inline-flex items-center gap-1 text-sm font-body font-medium hover:underline" style={{ color: "hsl(15,55%,42%)" }}>
+                    <div className="inline-block font-body text-xs font-semibold uppercase tracking-wide px-3 py-1 rounded-full mb-3" style={{ backgroundColor: "rgba(255,255,255,0.6)", color: item.dot }}>
+                      {item.type}
+                    </div>
+                    <h3 className="font-display text-2xl font-semibold mb-2" style={{ color: DARK }}>{item.name}</h3>
+                    <p className="font-body text-sm leading-relaxed mb-5" style={{ color: MUTED }}>{item.desc}</p>
+                    <button onClick={() => scrollTo("order")} className="inline-flex items-center gap-1 text-sm font-body font-semibold hover:underline" style={{ color: item.dot }}>
                       Заказать <Icon name="ArrowRight" size={14} />
                     </button>
                   </div>
@@ -330,34 +343,33 @@ export default function Index() {
             </div>
           )}
 
+          {/* Lemonades */}
           {activeTab === "lemonades" && (
             <div className="flex flex-col gap-10">
               {LEMONADE_BASES.map((base) => (
                 <div key={base.base}>
                   <div className="flex items-center gap-3 mb-5">
-                    <span className="text-2xl">{base.emoji}</span>
+                    <span className="text-3xl">{base.emoji}</span>
                     <div>
-                      <span className="font-body text-xs uppercase tracking-widest" style={{ color: "hsl(15,55%,42%)" }}>Основа</span>
-                      <h3 className="font-display text-2xl font-semibold" style={{ color: "hsl(24,20%,18%)" }}>{base.base}</h3>
+                      <span className="font-body text-xs uppercase tracking-widest font-semibold" style={{ color: base.dot }}>Основа</span>
+                      <h3 className="font-display text-2xl font-semibold" style={{ color: DARK }}>{base.base}</h3>
                     </div>
-                    <span className="ml-auto font-body text-xs px-3 py-1 rounded-full" style={{ backgroundColor: "hsl(36,28%,97%)", color: "hsl(24,15%,45%)", border: "1px solid hsl(30,20%,82%)" }}>
+                    <span className="ml-auto font-body text-xs px-3 py-1 rounded-full hidden sm:inline" style={{ backgroundColor: CREAM, color: MUTED, border: `1px solid ${BORDER}` }}>
                       капсула 70г · с кусочками фруктов
                     </span>
                   </div>
                   <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
                     {base.flavors.map((flavor) => (
-                      <div key={flavor.name} className={`card-hover rounded-2xl border border-border/40 ${base.color}`}>
+                      <div key={flavor.name} className="card-hover rounded-2xl border" style={{ backgroundColor: base.accent, borderColor: "transparent" }}>
                         <div className="p-5 flex items-center justify-between">
                           <div className="flex items-center gap-3">
                             <span className="text-3xl">{flavor.emoji}</span>
                             <div>
-                              <div className="font-body text-xs mb-0.5" style={{ color: "hsl(24,15%,50%)" }}>
-                                {base.base}
-                              </div>
-                              <div className="font-display text-lg font-semibold" style={{ color: "hsl(24,20%,18%)" }}>{flavor.name}</div>
+                              <div className="font-body text-xs mb-0.5" style={{ color: MUTED }}>{base.base}</div>
+                              <div className="font-display text-lg font-semibold" style={{ color: DARK }}>{flavor.name}</div>
                             </div>
                           </div>
-                          <button onClick={() => scrollTo("order")} className="inline-flex items-center gap-1 text-sm font-body font-medium hover:underline shrink-0 ml-2" style={{ color: "hsl(15,55%,42%)" }}>
+                          <button onClick={() => scrollTo("order")} className="inline-flex items-center gap-1 text-sm font-body font-semibold hover:underline shrink-0 ml-2" style={{ color: base.dot }}>
                             Заказать <Icon name="ArrowRight" size={14} />
                           </button>
                         </div>
@@ -369,16 +381,19 @@ export default function Index() {
             </div>
           )}
 
+          {/* Smoothies */}
           {activeTab === "smoothies" && (
-            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
               {CATALOG_SMOOTHIES.map((item) => (
-                <div key={item.name} className={`card-hover rounded-2xl overflow-hidden border border-border/40 ${item.color}`}>
-                  <div className="p-6">
+                <div key={item.name} className="card-hover rounded-3xl overflow-hidden border" style={{ backgroundColor: item.accent, borderColor: "transparent" }}>
+                  <div className="p-7">
                     <div className="text-5xl mb-4">{item.emoji}</div>
-                    <div className="font-body text-xs uppercase tracking-wide mb-1" style={{ color: "hsl(24,15%,45%)" }}>{item.type}</div>
-                    <h3 className="font-display text-2xl font-semibold mb-2" style={{ color: "hsl(24,20%,18%)" }}>{item.name}</h3>
-                    <p className="font-body text-sm leading-relaxed mb-4" style={{ color: "hsl(24,15%,45%)" }}>{item.desc}</p>
-                    <button onClick={() => scrollTo("order")} className="inline-flex items-center gap-1 text-sm font-body font-medium hover:underline" style={{ color: "hsl(15,55%,42%)" }}>
+                    <div className="inline-block font-body text-xs font-semibold uppercase tracking-wide px-3 py-1 rounded-full mb-3" style={{ backgroundColor: "rgba(255,255,255,0.6)", color: item.dot }}>
+                      {item.type}
+                    </div>
+                    <h3 className="font-display text-2xl font-semibold mb-2" style={{ color: DARK }}>{item.name}</h3>
+                    <p className="font-body text-sm leading-relaxed mb-5" style={{ color: MUTED }}>{item.desc}</p>
+                    <button onClick={() => scrollTo("order")} className="inline-flex items-center gap-1 text-sm font-body font-semibold hover:underline" style={{ color: item.dot }}>
                       Заказать <Icon name="ArrowRight" size={14} />
                     </button>
                   </div>
@@ -388,41 +403,39 @@ export default function Index() {
           )}
 
           <div className="text-center mt-10">
-            <p className="font-body text-sm" style={{ color: "hsl(24,15%,45%)" }}>Это только часть ассортимента. Уточните полный каталог у менеджера.</p>
+            <p className="font-body text-sm" style={{ color: MUTED }}>Это только часть ассортимента. Уточните полный каталог у менеджера.</p>
           </div>
         </div>
       </section>
 
-      <hr className="divider-organic mx-8" />
-
-      {/* ДОЙПАК БАННЕР */}
-      <section className="py-14 md:py-20">
+      {/* ── ДОЙПАК БАННЕР ── */}
+      <section className="py-14 md:py-20" style={{ backgroundColor: "hsl(95,28%,91%)" }}>
         <div className="container mx-auto px-4">
-          <div className="rounded-3xl p-8 md:p-12 relative overflow-hidden" style={{ backgroundColor: "hsl(140,22%,88%)" }}>
-            <div className="absolute top-0 right-0 text-[180px] leading-none opacity-10 pointer-events-none select-none">🥤</div>
+          <div className="rounded-3xl p-8 md:p-14 relative overflow-hidden" style={{ backgroundColor: "hsl(95,32%,84%)" }}>
+            <div className="absolute top-0 right-4 text-[200px] leading-none opacity-[0.08] pointer-events-none select-none">🥤</div>
             <div className="relative grid md:grid-cols-2 gap-10 items-center">
               <div>
-                <span className="font-body text-xs uppercase tracking-widest mb-2 inline-block" style={{ color: "hsl(140,38%,32%)" }}>Упаковка смузи</span>
-                <h2 className="font-display text-3xl md:text-4xl font-semibold mb-4" style={{ color: "hsl(24,20%,18%)" }}>
+                <span className="font-body text-xs uppercase tracking-[0.18em] font-semibold mb-3 inline-block" style={{ color: "hsl(95,42%,35%)" }}>Упаковка смузи</span>
+                <h2 className="font-display text-3xl md:text-4xl font-semibold mb-4" style={{ color: DARK }}>
                   Дойпак — умная упаковка
                 </h2>
-                <p className="font-body leading-relaxed" style={{ color: "hsl(24,15%,38%)" }}>
+                <p className="font-body leading-relaxed" style={{ color: MUTED }}>
                   Смузи приходят в дойпаке с zip-замком: добавил воду, взбил в блендере — и перелил обратно. Никакой лишней тары.
                 </p>
               </div>
-              <div className="grid grid-cols-1 gap-4">
+              <div className="grid gap-4">
                 {[
                   { icon: "RefreshCw", title: "Вторичное использование", desc: "Zip-замок закрывается повторно — дойпак служит стаканом, бутылкой или контейнером." },
                   { icon: "Backpack", title: "Удобно брать с собой", desc: "Лёгкий, не бьётся, помещается в любую сумку. Идеально для спорта и путешествий." },
                   { icon: "Leaf", title: "Бережёт природу", desc: "Меньше пластика и стекла — одна упаковка заменяет стакан, крышку и трубочку." },
                 ].map((item) => (
-                  <div key={item.title} className="flex gap-4 items-start rounded-2xl p-4" style={{ backgroundColor: "rgba(255,255,255,0.55)" }}>
-                    <div className="w-10 h-10 rounded-full flex items-center justify-center shrink-0" style={{ backgroundColor: "hsl(140,38%,32%)" }}>
-                      <Icon name={item.icon} size={18} style={{ color: "hsl(36,28%,97%)" }} />
+                  <div key={item.title} className="flex gap-4 items-start rounded-2xl p-4" style={{ backgroundColor: "rgba(255,255,255,0.5)" }}>
+                    <div className="w-10 h-10 rounded-full flex items-center justify-center shrink-0" style={{ backgroundColor: "hsl(95,42%,38%)" }}>
+                      <Icon name={item.icon} size={18} style={{ color: CREAM }} />
                     </div>
                     <div>
-                      <div className="font-display font-semibold text-base mb-0.5" style={{ color: "hsl(24,20%,18%)" }}>{item.title}</div>
-                      <div className="font-body text-sm leading-relaxed" style={{ color: "hsl(24,15%,42%)" }}>{item.desc}</div>
+                      <div className="font-display font-semibold text-base mb-0.5" style={{ color: DARK }}>{item.title}</div>
+                      <div className="font-body text-sm leading-relaxed" style={{ color: MUTED }}>{item.desc}</div>
                     </div>
                   </div>
                 ))}
@@ -432,55 +445,54 @@ export default function Index() {
         </div>
       </section>
 
-      <hr className="divider-organic mx-8" />
-
-      {/* КАК ЗАКАЗАТЬ */}
-      <section id="order" className="py-16 md:py-24">
+      {/* ── КАК ЗАКАЗАТЬ ── */}
+      <section id="order" className="py-16 md:py-24" style={{ backgroundColor: BG }}>
         <div className="container mx-auto px-4">
           <div className="text-center mb-14">
-            <span className="font-body text-sm uppercase tracking-widest" style={{ color: "hsl(15,55%,42%)" }}>Как заказать</span>
-            <h2 className="font-display text-4xl md:text-5xl font-semibold mt-2" style={{ color: "hsl(24,20%,18%)" }}>Просто, как сбор ягод</h2>
+            <span className="font-body text-xs uppercase tracking-[0.18em] font-semibold" style={{ color: BERRY }}>Как заказать</span>
+            <h2 className="font-display text-4xl md:text-5xl font-semibold mt-2" style={{ color: DARK }}>Просто, как сбор ягод</h2>
           </div>
 
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {STEPS.map((step, i) => (
               <div key={step.title} className="text-center">
-                <div className="relative inline-flex w-16 h-16 rounded-full items-center justify-center mb-4 mx-auto" style={{ backgroundColor: "hsl(15,40%,92%)" }}>
-                  <Icon name={step.icon} size={26} style={{ color: "hsl(15,55%,42%)" }} />
-                  <div className="absolute -top-1 -right-1 w-6 h-6 rounded-full flex items-center justify-center text-xs font-body font-semibold" style={{ backgroundColor: "hsl(15,45%,35%)", color: "hsl(36,28%,97%)" }}>
+                <div className="relative inline-flex w-18 h-18 rounded-full items-center justify-center mb-5 mx-auto" style={{ width: 72, height: 72, backgroundColor: BERRY_LIGHT }}>
+                  <Icon name={step.icon} size={28} style={{ color: BERRY }} />
+                  <div className="absolute -top-1 -right-1 w-7 h-7 rounded-full flex items-center justify-center text-xs font-body font-bold" style={{ backgroundColor: BERRY, color: CREAM }}>
                     {i + 1}
                   </div>
                 </div>
-                <h3 className="font-display text-xl font-semibold mb-2" style={{ color: "hsl(24,20%,18%)" }}>{step.title}</h3>
-                <p className="font-body text-sm leading-relaxed" style={{ color: "hsl(24,15%,45%)" }}>{step.desc}</p>
+                <h3 className="font-display text-xl font-semibold mb-2" style={{ color: DARK }}>{step.title}</h3>
+                <p className="font-body text-sm leading-relaxed" style={{ color: MUTED }}>{step.desc}</p>
               </div>
             ))}
           </div>
 
-          <div className="mt-14 rounded-3xl p-8 md:p-12 relative overflow-hidden" style={{ backgroundColor: "hsl(15,45%,35%)" }}>
-            <div className="absolute top-0 right-0 text-[200px] leading-none opacity-10 pointer-events-none select-none">🌿</div>
+          {/* CTA banner */}
+          <div className="mt-16 rounded-3xl p-8 md:p-14 relative overflow-hidden" style={{ background: `linear-gradient(135deg, ${BERRY} 0%, hsl(355,65%,38%) 100%)` }}>
+            <div className="absolute top-0 right-0 text-[220px] leading-none opacity-[0.07] pointer-events-none select-none">🌿</div>
             <div className="relative grid md:grid-cols-2 gap-8 items-center">
               <div>
-                <h3 className="font-display text-3xl md:text-4xl font-semibold mb-3" style={{ color: "hsl(36,28%,97%)" }}>
+                <h3 className="font-display text-3xl md:text-4xl font-semibold mb-3" style={{ color: CREAM }}>
                   Готовы попробовать?
                 </h3>
-                <p className="font-body leading-relaxed" style={{ color: "rgba(245,240,230,0.8)" }}>
+                <p className="font-body leading-relaxed" style={{ color: "rgba(252,248,240,0.8)" }}>
                   Напишите нам или позвоните — поможем выбрать первый набор и расскажем об акциях для новых покупателей.
                 </p>
               </div>
               <div className="flex flex-col sm:flex-row gap-3">
                 <a
                   href="tel:+78001234567"
-                  className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full font-body font-medium transition-all hover:opacity-90"
-                  style={{ backgroundColor: "hsl(38,80%,58%)", color: "hsl(24,20%,18%)" }}
+                  className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-full font-body font-semibold transition-all hover:opacity-90"
+                  style={{ backgroundColor: SUN, color: DARK }}
                 >
                   <Icon name="Phone" size={18} />
                   8 800 123-45-67
                 </a>
                 <a
                   href="https://t.me/zhivitsa"
-                  className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full font-body font-medium border transition-all"
-                  style={{ borderColor: "rgba(245,240,230,0.4)", color: "hsl(36,28%,97%)" }}
+                  className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-full font-body font-semibold border transition-all hover:bg-white/10"
+                  style={{ borderColor: "rgba(252,248,240,0.35)", color: CREAM }}
                 >
                   Написать в Telegram
                 </a>
@@ -490,60 +502,62 @@ export default function Index() {
         </div>
       </section>
 
-      <hr className="divider-organic mx-8" />
-
-      {/* РЕЦЕПТЫ */}
-      <section id="recipes" className="py-16 md:py-24" style={{ backgroundColor: "hsl(30,20%,93%)" }}>
+      {/* ── РЕЦЕПТЫ ── */}
+      <section id="recipes" className="py-16 md:py-24" style={{ backgroundColor: "hsl(42,30%,90%)" }}>
         <div className="container mx-auto px-4">
           <div className="text-center mb-14">
-            <span className="font-body text-sm uppercase tracking-widest" style={{ color: "hsl(15,55%,42%)" }}>Рецепты</span>
-            <h2 className="font-display text-4xl md:text-5xl font-semibold mt-2" style={{ color: "hsl(24,20%,18%)" }}>Как приготовить</h2>
-            <p className="font-body mt-3" style={{ color: "hsl(24,15%,45%)" }}>Несколько идей для вдохновения. Всё готовится за несколько минут.</p>
+            <span className="font-body text-xs uppercase tracking-[0.18em] font-semibold" style={{ color: BERRY }}>Рецепты</span>
+            <h2 className="font-display text-4xl md:text-5xl font-semibold mt-2" style={{ color: DARK }}>Как приготовить</h2>
+            <p className="font-body mt-3" style={{ color: MUTED }}>Несколько идей для вдохновения. Всё готовится за несколько минут.</p>
           </div>
 
-          <div className="grid grid-cols-3 gap-3 mb-6 max-w-2xl mx-auto">
+          <div className="grid grid-cols-3 gap-3 mb-8 max-w-2xl mx-auto">
             {RECIPES.map((r, i) => (
               <button
                 key={r.title}
                 onClick={() => setActiveRecipe(i)}
                 className="text-left rounded-2xl p-4 transition-all font-body"
                 style={{
-                  backgroundColor: activeRecipe === i ? "hsl(15,45%,35%)" : "hsl(36,25%,96%)",
-                  color: activeRecipe === i ? "hsl(36,28%,97%)" : "hsl(24,20%,18%)",
-                  boxShadow: activeRecipe === i ? "0 4px 20px rgba(80,40,20,0.2)" : undefined,
+                  backgroundColor: activeRecipe === i ? BERRY : CREAM,
+                  color: activeRecipe === i ? CREAM : DARK,
+                  boxShadow: activeRecipe === i ? "0 6px 24px rgba(180,40,80,0.28)" : undefined,
                 }}
               >
                 <div className="text-3xl mb-2">{r.emoji}</div>
                 <div className="font-semibold text-sm leading-snug">{r.title}</div>
-                <div className="text-xs mt-1.5 px-2 py-0.5 rounded-full inline-block" style={{ backgroundColor: activeRecipe === i ? "rgba(255,255,255,0.2)" : r.badgeColor, color: activeRecipe === i ? "hsl(36,28%,97%)" : "hsl(24,20%,30%)" }}>{r.badge}</div>
+                <div className="text-xs mt-1.5 px-2 py-0.5 rounded-full inline-block" style={{ backgroundColor: activeRecipe === i ? "rgba(255,255,255,0.2)" : r.accent, color: activeRecipe === i ? CREAM : DARK }}>
+                  {r.badge}
+                </div>
               </button>
             ))}
           </div>
 
-          <div className="rounded-3xl overflow-hidden border" style={{ backgroundColor: "hsl(36,25%,96%)", borderColor: "hsl(30,20%,88%)" }}>
+          <div className="rounded-3xl overflow-hidden" style={{ backgroundColor: CREAM }}>
             <div className="grid md:grid-cols-2">
-              <div className="p-8 md:p-10">
+              <div className="p-8 md:p-12">
                 <div className="text-5xl mb-4">{RECIPES[activeRecipe].emoji}</div>
-                <div className="inline-block font-body text-xs px-3 py-1 rounded-full mb-3" style={{ backgroundColor: RECIPES[activeRecipe].badgeColor, color: "hsl(24,20%,25%)" }}>{RECIPES[activeRecipe].badge}</div>
-                <h3 className="font-display text-3xl font-semibold mb-1" style={{ color: "hsl(24,20%,18%)" }}>{RECIPES[activeRecipe].title}</h3>
-                <p className="font-body text-sm mb-6" style={{ color: "hsl(15,55%,42%)" }}>
+                <div className="inline-block font-body text-xs px-3 py-1 rounded-full mb-4" style={{ backgroundColor: RECIPES[activeRecipe].accent, color: DARK }}>
+                  {RECIPES[activeRecipe].badge}
+                </div>
+                <h3 className="font-display text-3xl font-semibold mb-1" style={{ color: DARK }}>{RECIPES[activeRecipe].title}</h3>
+                <p className="font-body text-sm mb-7" style={{ color: BERRY }}>
                   {RECIPES[activeRecipe].concentrate} · {RECIPES[activeRecipe].time}
                 </p>
                 <div className="space-y-4">
                   {RECIPES[activeRecipe].steps.map((step, idx) => (
                     <div key={idx} className="flex gap-3 items-start">
-                      <div className="w-7 h-7 rounded-full flex items-center justify-center flex-shrink-0 text-sm font-body font-semibold" style={{ backgroundColor: "hsl(15,45%,35%)", color: "hsl(36,28%,97%)" }}>
+                      <div className="w-7 h-7 rounded-full flex items-center justify-center flex-shrink-0 text-sm font-body font-bold" style={{ backgroundColor: BERRY, color: CREAM }}>
                         {idx + 1}
                       </div>
-                      <p className="font-body text-sm pt-1" style={{ color: "hsl(24,20%,18%)" }}>{step}</p>
+                      <p className="font-body text-sm pt-1" style={{ color: DARK }}>{step}</p>
                     </div>
                   ))}
                 </div>
               </div>
-              <div className="relative min-h-[260px] md:min-h-0">
+              <div className="relative min-h-[280px] md:min-h-0 overflow-hidden">
                 <img
-                  src="https://cdn.poehali.dev/projects/32ce1ba6-2d08-4502-a6d8-df9c23186132/files/f9c8a6be-cfd5-4696-8ecb-99028923f91b.jpg"
-                  alt="Приготовление напитка"
+                  src={IMG_FRUITS}
+                  alt="Свежие фрукты"
                   className="absolute inset-0 w-full h-full object-cover"
                 />
               </div>
@@ -552,30 +566,28 @@ export default function Index() {
         </div>
       </section>
 
-      <hr className="divider-organic mx-8" />
-
-      {/* ИНСТРУКЦИЯ */}
-      <section id="instruction" className="py-16 md:py-24">
+      {/* ── FAQ ── */}
+      <section id="instruction" className="py-16 md:py-24" style={{ backgroundColor: BG }}>
         <div className="container mx-auto px-4 max-w-3xl">
           <div className="text-center mb-12">
-            <span className="font-body text-sm uppercase tracking-widest" style={{ color: "hsl(15,55%,42%)" }}>Инструкция</span>
-            <h2 className="font-display text-4xl md:text-5xl font-semibold mt-2" style={{ color: "hsl(24,20%,18%)" }}>Как разводить</h2>
+            <span className="font-body text-xs uppercase tracking-[0.18em] font-semibold" style={{ color: BERRY }}>Вопросы и ответы</span>
+            <h2 className="font-display text-4xl md:text-5xl font-semibold mt-2" style={{ color: DARK }}>Как разводить</h2>
           </div>
 
-          <div className="space-y-4">
+          <div className="space-y-3">
             {[
               { q: "Какое соотношение концентрата и воды?", a: "Стандартное разведение — 1:20 (1 часть концентрата на 20 частей воды). Это 50 мл на 1 литр напитка. Вы можете регулировать насыщенность по вкусу — от 1:15 до 1:30." },
               { q: "Можно ли разводить горячей водой?", a: "Да! Большинство концентратов отлично подходят для горячих напитков. Оптимальная температура — 70–80°C. Кипятком заливать не рекомендуется, чтобы сохранить витамины." },
               { q: "Сколько хранится после вскрытия?", a: "После вскрытия хранить в холодильнике не более 30 дней. В закрытом виде — до 24 месяцев при комнатной температуре в тёмном месте." },
-              { q: "Можно ли добавлять в коктейли и смузи?", a: "Конечно! Концентраты прекрасно работают как основа для смузи, морсов, компотов, лимонадов и даже алкогольных коктейлей. В разделе рецептов есть идеи." },
-              { q: "Подходит ли детям?", a: "Детям от 3 лет — да. Рекомендуем разводить 1:25 для более мягкого вкуса. Также есть линейка без сахара для детей со склонностью к аллергии." },
+              { q: "Можно ли добавлять в коктейли и смузи?", a: "Конечно! Концентраты прекрасно работают как основа для смузи, морсов, компотов, лимонадов и даже алкогольных коктейлей." },
+              { q: "Подходит ли детям?", a: "Детям от 3 лет — да. Рекомендуем разводить 1:25 для более мягкого вкуса. Также есть линейка без сахара." },
             ].map((item, i) => (
-              <details key={i} className="group rounded-2xl border overflow-hidden" style={{ backgroundColor: "hsl(36,25%,96%)", borderColor: "hsl(30,20%,88%)" }}>
-                <summary className="flex items-center justify-between p-5 cursor-pointer font-display text-lg font-medium list-none" style={{ color: "hsl(24,20%,18%)" }}>
+              <details key={i} className="group rounded-2xl border overflow-hidden" style={{ backgroundColor: CREAM, borderColor: BORDER }}>
+                <summary className="flex items-center justify-between p-5 cursor-pointer font-display text-lg font-medium list-none" style={{ color: DARK }}>
                   {item.q}
-                  <Icon name="ChevronDown" size={18} className="group-open:rotate-180 transition-transform flex-shrink-0 ml-3" style={{ color: "hsl(15,55%,42%)" }} />
+                  <Icon name="ChevronDown" size={18} className="group-open:rotate-180 transition-transform flex-shrink-0 ml-3" style={{ color: BERRY }} />
                 </summary>
-                <div className="px-5 pb-5 font-body text-sm leading-relaxed border-t pt-4" style={{ color: "hsl(24,15%,45%)", borderColor: "hsl(30,20%,88%)" }}>
+                <div className="px-5 pb-5 font-body text-sm leading-relaxed border-t pt-4" style={{ color: MUTED, borderColor: BORDER }}>
                   {item.a}
                 </div>
               </details>
@@ -584,147 +596,122 @@ export default function Index() {
         </div>
       </section>
 
-      <hr className="divider-organic mx-8" />
-
-      {/* О КОМПАНИИ */}
-      <section id="about" className="py-16 md:py-24" style={{ backgroundColor: "hsl(30,20%,93%)" }}>
+      {/* ── О КОМПАНИИ ── */}
+      <section id="about" className="py-16 md:py-24 relative overflow-hidden" style={{ backgroundColor: "hsl(42,30%,90%)" }}>
         <div className="container mx-auto px-4">
           <div className="grid md:grid-cols-2 gap-12 items-center">
+            {/* text */}
             <div>
-              <span className="font-body text-sm uppercase tracking-widest" style={{ color: "hsl(15,55%,42%)" }}>О компании</span>
-              <h2 className="font-display text-4xl md:text-5xl font-semibold mt-2 mb-6" style={{ color: "hsl(24,20%,18%)" }}>
+              <span className="font-body text-xs uppercase tracking-[0.18em] font-semibold" style={{ color: BERRY }}>О компании</span>
+              <h2 className="font-display text-4xl md:text-5xl font-semibold mt-2 mb-6" style={{ color: DARK }}>
                 С 2012 года<br />мы несём вкус леса
               </h2>
-              <p className="font-body leading-relaxed mb-5" style={{ color: "hsl(24,15%,45%)" }}>
+              <p className="font-body leading-relaxed mb-5" style={{ color: MUTED }}>
                 «Море Ягод» началось с маленькой лаборатории в Томске. Основатели — семья потомственных сборщиков ягод, которые хотели поделиться вкусами сибирского леса со всей страной.
               </p>
-              <p className="font-body leading-relaxed mb-8" style={{ color: "hsl(24,15%,45%)" }}>
+              <p className="font-body leading-relaxed mb-10" style={{ color: MUTED }}>
                 Сегодня мы работаем с более чем 40 семьями сборщиков в Томской, Новосибирской областях и на Алтае. У нас своё небольшое производство с лицензией Роспотребнадзора и два фирменных магазина в Москве.
               </p>
 
-              <div className="grid grid-cols-3 gap-6">
-                {[["2012", "год основания"], ["40+", "партнёров-сборщиков"], ["12 000+", "довольных клиентов"]].map(([val, label]) => (
+              <div className="flex gap-10 flex-wrap">
+                {[["2012", "год основания"], ["40+", "партнёров-сборщиков"], ["12 000+", "клиентов"]].map(([val, label]) => (
                   <div key={label}>
-                    <div className="font-display text-3xl font-semibold" style={{ color: "hsl(15,55%,42%)" }}>{val}</div>
-                    <div className="font-body text-xs mt-1" style={{ color: "hsl(24,15%,45%)" }}>{label}</div>
+                    <div className="font-display text-4xl font-semibold" style={{ color: BERRY }}>{val}</div>
+                    <div className="font-body text-xs mt-0.5" style={{ color: MUTED }}>{label}</div>
                   </div>
                 ))}
               </div>
             </div>
 
+            {/* image + cards */}
             <div className="grid grid-cols-2 gap-4">
-              <div className="rounded-2xl p-6 col-span-2" style={{ backgroundColor: "hsl(15,40%,92%)" }}>
-                <div className="text-3xl mb-3">🌲</div>
-                <h4 className="font-display text-xl font-semibold mb-2" style={{ color: "hsl(24,20%,18%)" }}>Наша миссия</h4>
-                <p className="font-body text-sm leading-relaxed" style={{ color: "hsl(24,15%,45%)" }}>
-                  Вернуть людям вкус настоящих напитков. Без компромиссов с природой — ни в составе, ни в методе производства.
+              <div className="col-span-2 rounded-3xl overflow-hidden aspect-video">
+                <img src={IMG_TERRACE} alt="Терраса с фруктами" className="w-full h-full object-cover" />
+              </div>
+              <div className="rounded-2xl p-5" style={{ backgroundColor: BERRY_LIGHT }}>
+                <div className="text-2xl mb-2">🌲</div>
+                <h4 className="font-display text-lg font-semibold mb-1" style={{ color: DARK }}>Наша миссия</h4>
+                <p className="font-body text-xs leading-relaxed" style={{ color: MUTED }}>
+                  Вернуть людям вкус настоящих напитков. Без компромиссов с природой.
                 </p>
               </div>
-              {[
-                { icon: "🏅", title: "Сертифицировано", text: "Продукция сертифицирована по ГОСТ. Все партии проходят лабораторный контроль." },
-                { icon: "♻️", title: "Экоупаковка", text: "Стеклянные бутылки, бумажные этикетки, картонные коробки." },
-              ].map((item) => (
-                <div key={item.title} className="rounded-2xl p-5" style={{ backgroundColor: "hsl(36,25%,96%)" }}>
-                  <div className="text-2xl mb-2">{item.icon}</div>
-                  <h4 className="font-display text-lg font-semibold mb-1" style={{ color: "hsl(24,20%,18%)" }}>{item.title}</h4>
-                  <p className="font-body text-xs leading-relaxed" style={{ color: "hsl(24,15%,45%)" }}>{item.text}</p>
-                </div>
-              ))}
+              <div className="rounded-2xl p-5" style={{ backgroundColor: "hsl(50,88%,90%)" }}>
+                <div className="text-2xl mb-2">🏅</div>
+                <h4 className="font-display text-lg font-semibold mb-1" style={{ color: DARK }}>Сертифицировано</h4>
+                <p className="font-body text-xs leading-relaxed" style={{ color: MUTED }}>
+                  Продукция сертифицирована по ГОСТ. Все партии проходят лабораторный контроль.
+                </p>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
-      <hr className="divider-organic mx-8" />
-
-      {/* КОНТАКТЫ */}
-      <section id="contacts" className="py-16 md:py-24">
+      {/* ── КОНТАКТЫ ── */}
+      <section id="contacts" className="py-16 md:py-24" style={{ backgroundColor: BG }}>
         <div className="container mx-auto px-4">
           <div className="text-center mb-14">
-            <span className="font-body text-sm uppercase tracking-widest" style={{ color: "hsl(15,55%,42%)" }}>Контакты</span>
-            <h2 className="font-display text-4xl md:text-5xl font-semibold mt-2" style={{ color: "hsl(24,20%,18%)" }}>Свяжитесь с нами</h2>
+            <span className="font-body text-xs uppercase tracking-[0.18em] font-semibold" style={{ color: BERRY }}>Контакты</span>
+            <h2 className="font-display text-4xl md:text-5xl font-semibold mt-2" style={{ color: DARK }}>Свяжитесь с нами</h2>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-6 mb-12">
+          <div className="grid md:grid-cols-3 gap-5 mb-12">
             {[
               { icon: "Phone", title: "Телефон", lines: ["8 800 123-45-67", "Бесплатно по России"] },
-              { icon: "Mail", title: "Email", lines: ["hello@zhivitsa.ru", "Ответим в течение дня"] },
+              { icon: "Mail", title: "Email", lines: ["hello@more-yagod.ru", "Ответим в течение дня"] },
               { icon: "MapPin", title: "Адрес", lines: ["Москва, ул. Арбат, 15", "Пн–Сб, 10:00–19:00"] },
             ].map((item) => (
-              <div key={item.title} className="card-hover rounded-2xl p-7 text-center border" style={{ backgroundColor: "hsl(36,25%,96%)", borderColor: "hsl(30,20%,88%)" }}>
-                <div className="w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-4" style={{ backgroundColor: "hsl(15,40%,92%)" }}>
-                  <Icon name={item.icon} size={22} style={{ color: "hsl(15,55%,42%)" }} />
+              <div key={item.title} className="card-hover rounded-3xl p-7 text-center border" style={{ backgroundColor: CREAM, borderColor: BORDER }}>
+                <div className="w-14 h-14 rounded-full flex items-center justify-center mx-auto mb-4" style={{ backgroundColor: BERRY_LIGHT }}>
+                  <Icon name={item.icon} size={24} style={{ color: BERRY }} />
                 </div>
-                <h3 className="font-display text-xl font-semibold mb-2" style={{ color: "hsl(24,20%,18%)" }}>{item.title}</h3>
+                <h3 className="font-display text-xl font-semibold mb-2" style={{ color: DARK }}>{item.title}</h3>
                 {item.lines.map((line, i) => (
-                  <p key={i} className={`font-body ${i === 0 ? "font-medium" : "text-sm"}`} style={{ color: i === 0 ? "hsl(24,20%,18%)" : "hsl(24,15%,45%)" }}>{line}</p>
+                  <p key={i} className={`font-body ${i === 0 ? "font-semibold" : "text-sm"}`} style={{ color: i === 0 ? DARK : MUTED }}>{line}</p>
                 ))}
               </div>
             ))}
           </div>
 
-          {/* Форма */}
-          <div className="max-w-xl mx-auto rounded-3xl p-8 border" style={{ backgroundColor: "hsl(36,25%,96%)", borderColor: "hsl(30,20%,88%)" }}>
-            <h3 className="font-display text-2xl font-semibold mb-6 text-center" style={{ color: "hsl(24,20%,18%)" }}>Оставьте заявку</h3>
+          {/* Form */}
+          <div className="max-w-xl mx-auto rounded-3xl p-8 md:p-10 border" style={{ backgroundColor: CREAM, borderColor: BORDER }}>
+            <h3 className="font-display text-2xl font-semibold mb-6 text-center" style={{ color: DARK }}>Оставьте заявку</h3>
             <div className="space-y-4">
               <div>
-                <label className="font-body text-sm mb-1 block" style={{ color: "hsl(24,15%,45%)" }}>Имя</label>
-                <input
-                  type="text"
-                  placeholder="Ваше имя"
-                  className="w-full rounded-xl border px-4 py-3 font-body text-sm bg-white focus:outline-none"
-                  style={{ borderColor: "hsl(30,20%,82%)" }}
-                />
+                <label className="font-body text-sm mb-1.5 block font-medium" style={{ color: MUTED }}>Имя</label>
+                <input type="text" placeholder="Ваше имя" className="w-full rounded-2xl border px-4 py-3 font-body text-sm bg-white focus:outline-none focus:ring-2" style={{ borderColor: BORDER, '--tw-ring-color': BERRY } as React.CSSProperties} />
               </div>
               <div>
-                <label className="font-body text-sm mb-1 block" style={{ color: "hsl(24,15%,45%)" }}>Телефон или Email</label>
-                <input
-                  type="text"
-                  placeholder="+7 (___) ___-__-__"
-                  className="w-full rounded-xl border px-4 py-3 font-body text-sm bg-white focus:outline-none"
-                  style={{ borderColor: "hsl(30,20%,82%)" }}
-                />
+                <label className="font-body text-sm mb-1.5 block font-medium" style={{ color: MUTED }}>Телефон или Email</label>
+                <input type="text" placeholder="+7 (___) ___-__-__" className="w-full rounded-2xl border px-4 py-3 font-body text-sm bg-white focus:outline-none focus:ring-2" style={{ borderColor: BORDER, '--tw-ring-color': BERRY } as React.CSSProperties} />
               </div>
               <div>
-                <label className="font-body text-sm mb-1 block" style={{ color: "hsl(24,15%,45%)" }}>Сообщение</label>
-                <textarea
-                  placeholder="Расскажите, что вас интересует..."
-                  rows={3}
-                  className="w-full rounded-xl border px-4 py-3 font-body text-sm bg-white focus:outline-none resize-none"
-                  style={{ borderColor: "hsl(30,20%,82%)" }}
-                />
+                <label className="font-body text-sm mb-1.5 block font-medium" style={{ color: MUTED }}>Сообщение</label>
+                <textarea placeholder="Расскажите, что вас интересует..." rows={3} className="w-full rounded-2xl border px-4 py-3 font-body text-sm bg-white focus:outline-none resize-none focus:ring-2" style={{ borderColor: BORDER, '--tw-ring-color': BERRY } as React.CSSProperties} />
               </div>
-              <button
-                className="w-full py-3 rounded-xl font-body font-medium transition-all hover:opacity-90"
-                style={{ backgroundColor: "hsl(15,45%,35%)", color: "hsl(36,28%,97%)" }}
-              >
+              <button className="w-full py-3.5 rounded-full font-body font-semibold transition-all hover:opacity-90" style={{ backgroundColor: BERRY, color: CREAM }}>
                 Отправить заявку
               </button>
-              <p className="font-body text-xs text-center" style={{ color: "hsl(24,15%,45%)" }}>Нажимая кнопку, вы соглашаетесь с политикой конфиденциальности</p>
+              <p className="font-body text-xs text-center" style={{ color: MUTED }}>Нажимая кнопку, вы соглашаетесь с политикой конфиденциальности</p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* FOOTER */}
-      <footer className="border-t py-8" style={{ backgroundColor: "hsl(24,20%,18%)", borderColor: "hsl(24,20%,25%)" }}>
+      {/* ── FOOTER ── */}
+      <footer className="border-t py-10" style={{ backgroundColor: DARK, borderColor: "rgba(255,255,255,0.08)" }}>
         <div className="container mx-auto px-4">
-          <div className="flex flex-col md:flex-row items-center justify-between gap-4">
-            <div className="flex items-center gap-2">
-              <span className="text-xl">🌿</span>
-              <span className="font-display text-xl font-semibold" style={{ color: "hsl(36,28%,97%)" }}>Море Ягод</span>
+          <div className="flex flex-col md:flex-row items-center justify-between gap-5">
+            <div className="flex items-center gap-2.5">
+              <span className="text-2xl">🍓</span>
+              <span className="font-display text-2xl font-semibold" style={{ color: CREAM }}>Море Ягод</span>
             </div>
-            <p className="font-body text-sm text-center" style={{ color: "rgba(245,240,230,0.4)" }}>
+            <p className="font-body text-sm text-center" style={{ color: "rgba(252,248,240,0.38)" }}>
               © 2012–2026 ООО «Море Ягод». Все права защищены.
             </p>
-            <div className="flex gap-4 flex-wrap justify-center">
+            <div className="flex gap-5 flex-wrap justify-center">
               {NAV_ITEMS.slice(0, 5).map((item) => (
-                <button
-                  key={item.id}
-                  onClick={() => scrollTo(item.id)}
-                  className="font-body text-xs transition-colors hover:opacity-80"
-                  style={{ color: "rgba(245,240,230,0.5)" }}
-                >
+                <button key={item.id} onClick={() => scrollTo(item.id)} className="font-body text-xs transition-colors hover:opacity-80" style={{ color: "rgba(252,248,240,0.48)" }}>
                   {item.label}
                 </button>
               ))}
