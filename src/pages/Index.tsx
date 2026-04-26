@@ -11,61 +11,29 @@ const NAV_ITEMS = [
   { id: "contacts", label: "Контакты" },
 ];
 
-const CATALOG = [
-  {
-    name: "Брусника с мятой",
-    type: "Ягодный концентрат",
-    volume: "500 мл",
-    price: "490 ₽",
-    emoji: "🫐",
-    color: "bg-[hsl(350,30%,92%)]",
-    desc: "Северная брусника с освежающей ноткой перечной мяты. 1:20 с водой.",
-  },
-  {
-    name: "Шиповник & имбирь",
-    type: "Согревающий концентрат",
-    volume: "500 мл",
-    price: "520 ₽",
-    emoji: "🌹",
-    color: "bg-[hsl(15,40%,92%)]",
-    desc: "Богатый витамином C шиповник с тёплым имбирём. Идеален горячим.",
-  },
-  {
-    name: "Облепиха & апельсин",
-    type: "Витаминный концентрат",
-    volume: "500 мл",
-    price: "540 ₽",
-    emoji: "🍊",
-    color: "bg-[hsl(38,50%,92%)]",
-    desc: "Солнечная облепиха с цедрой апельсина. Зарядит энергией с утра.",
-  },
-  {
-    name: "Черника & лаванда",
-    type: "Ягодный концентрат",
-    volume: "500 мл",
-    price: "560 ₽",
-    emoji: "🫐",
-    color: "bg-[hsl(260,25%,93%)]",
-    desc: "Дикая черника с нежным ароматом лаванды. Расслабляет и успокаивает.",
-  },
-  {
-    name: "Смородина & базилик",
-    type: "Ягодный концентрат",
-    volume: "500 мл",
-    price: "490 ₽",
-    emoji: "🍇",
-    color: "bg-[hsl(280,20%,92%)]",
-    desc: "Сочная чёрная смородина с пряным базиликом — неожиданное сочетание.",
-  },
-  {
-    name: "Рябина & корица",
-    type: "Осенний концентрат",
-    volume: "500 мл",
-    price: "510 ₽",
-    emoji: "🍂",
-    color: "bg-[hsl(20,45%,92%)]",
-    desc: "Терпкая рябина со сладкой корицей. Напоминает золотую осень.",
-  },
+const CATALOG: Record<string, { name: string; type: string; volume: string; price: string; emoji: string; color: string; desc: string }[]> = {
+  teas: [
+    { name: "Малина-грейпфрут", type: "Чайный концентрат", volume: "500 мл", price: "490 ₽", emoji: "🍓", color: "bg-[hsl(350,30%,92%)]", desc: "Сочная малина и лёгкая горчинка грейпфрута. Освежает и бодрит." },
+    { name: "Облепиха-апельсин", type: "Чайный концентрат", volume: "500 мл", price: "520 ₽", emoji: "🍊", color: "bg-[hsl(38,50%,92%)]", desc: "Солнечная облепиха с цедрой апельсина. Витаминный заряд в каждом глотке." },
+    { name: "Клюква-апельсин", type: "Чайный концентрат", volume: "500 мл", price: "510 ₽", emoji: "🍊", color: "bg-[hsl(15,40%,92%)]", desc: "Терпкая клюква и сочный апельсин — классическое зимнее сочетание." },
+    { name: "Глинтвейн клюква-вишня", type: "Глинтвейн", volume: "500 мл", price: "560 ₽", emoji: "🍷", color: "bg-[hsl(345,35%,90%)]", desc: "Насыщенный согревающий глинтвейн из клюквы и вишни со специями." },
+    { name: "Чёрная смородина-апельсин", type: "Чайный концентрат", volume: "500 мл", price: "490 ₽", emoji: "🫐", color: "bg-[hsl(280,20%,92%)]", desc: "Яркая смородина и свежий апельсин — насыщенный витаминами дуэт." },
+    { name: "Марокканский цитрусовый", type: "Чай со специями", volume: "500 мл", price: "540 ₽", emoji: "🌶️", color: "bg-[hsl(30,40%,91%)]", desc: "Цитрусовый купаж с восточными специями. Тёплый и пряный аромат Марокко." },
+  ],
+  lemonades: [],
+  smoothies: [
+    { name: "Пинаколада", type: "Смузи-концентрат", volume: "500 мл", price: "590 ₽", emoji: "🥥", color: "bg-[hsl(48,40%,92%)]", desc: "Кокос, манго и ананас — тропическое трио в одном стакане." },
+    { name: "Тропический чилл", type: "Смузи-концентрат", volume: "500 мл", price: "570 ₽", emoji: "🍓", color: "bg-[hsl(350,35%,91%)]", desc: "Клубника, маракуйя и манго — взрыв тропических вкусов." },
+    { name: "Балийский трип", type: "Смузи-концентрат", volume: "500 мл", price: "550 ₽", emoji: "🥭", color: "bg-[hsl(38,45%,92%)]", desc: "Манго и маракуйя — освежающий дуэт с острова Бали." },
+    { name: "Летний бриз", type: "Смузи-концентрат", volume: "500 мл", price: "530 ₽", emoji: "🍉", color: "bg-[hsl(355,40%,92%)]", desc: "Манго и арбуз — сладкий летний бриз в каждом глотке." },
+    { name: "Манго шейк", type: "Смузи-концентрат", volume: "500 мл", price: "510 ₽", emoji: "🥭", color: "bg-[hsl(40,55%,92%)]", desc: "Чистый манговый вкус — насыщенный, сладкий и солнечный." },
+  ],
+};
+
+const CATALOG_TABS = [
+  { id: "teas", label: "Чаи", emoji: "🍵" },
+  { id: "lemonades", label: "Лимонады", emoji: "🍋" },
+  { id: "smoothies", label: "Смузи", emoji: "🥤" },
 ];
 
 const RECIPES = [
@@ -126,6 +94,7 @@ export default function Index() {
   const [activeSection, setActiveSection] = useState("home");
   const [mobileOpen, setMobileOpen] = useState(false);
   const [activeRecipe, setActiveRecipe] = useState(0);
+  const [activeTab, setActiveTab] = useState("teas");
 
   const scrollTo = (id: string) => {
     setActiveSection(id);
@@ -294,31 +263,55 @@ export default function Index() {
             </p>
           </div>
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {CATALOG.map((item) => (
-              <div key={item.name} className={`card-hover rounded-2xl overflow-hidden border border-border/40 ${item.color}`}>
-                <div className="p-6">
-                  <div className="text-5xl mb-4">{item.emoji}</div>
-                  <div className="font-body text-xs uppercase tracking-wide mb-1" style={{ color: "hsl(24,15%,45%)" }}>{item.type}</div>
-                  <h3 className="font-display text-2xl font-semibold mb-2" style={{ color: "hsl(24,20%,18%)" }}>{item.name}</h3>
-                  <p className="font-body text-sm leading-relaxed mb-4" style={{ color: "hsl(24,15%,45%)" }}>{item.desc}</p>
-                  <div className="flex items-center justify-between">
-                    <div>
-                      <span className="font-display text-2xl font-semibold" style={{ color: "hsl(15,55%,42%)" }}>{item.price}</span>
-                      <span className="font-body text-xs ml-1" style={{ color: "hsl(24,15%,45%)" }}>/ {item.volume}</span>
-                    </div>
-                    <button
-                      onClick={() => scrollTo("order")}
-                      className="inline-flex items-center gap-1 text-sm font-body font-medium hover:underline"
-                      style={{ color: "hsl(15,55%,42%)" }}
-                    >
-                      Заказать <Icon name="ArrowRight" size={14} />
-                    </button>
-                  </div>
-                </div>
-              </div>
+          <div className="flex justify-center gap-2 mb-10 flex-wrap">
+            {CATALOG_TABS.map((tab) => (
+              <button
+                key={tab.id}
+                onClick={() => setActiveTab(tab.id)}
+                className="inline-flex items-center gap-2 px-6 py-2.5 rounded-full font-body font-medium transition-all"
+                style={activeTab === tab.id
+                  ? { backgroundColor: "hsl(15,45%,35%)", color: "hsl(36,28%,97%)" }
+                  : { backgroundColor: "hsl(36,28%,97%)", color: "hsl(24,20%,18%)", border: "1px solid hsl(30,20%,82%)" }
+                }
+              >
+                <span>{tab.emoji}</span> {tab.label}
+              </button>
             ))}
           </div>
+
+          {CATALOG[activeTab].length === 0 ? (
+            <div className="text-center py-16" style={{ color: "hsl(24,15%,55%)" }}>
+              <div className="text-5xl mb-4">🍋</div>
+              <p className="font-body text-lg">Скоро здесь появятся вкусные лимонады!</p>
+              <p className="font-body text-sm mt-2">Уточните ассортимент у менеджера.</p>
+            </div>
+          ) : (
+            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+              {CATALOG[activeTab].map((item) => (
+                <div key={item.name} className={`card-hover rounded-2xl overflow-hidden border border-border/40 ${item.color}`}>
+                  <div className="p-6">
+                    <div className="text-5xl mb-4">{item.emoji}</div>
+                    <div className="font-body text-xs uppercase tracking-wide mb-1" style={{ color: "hsl(24,15%,45%)" }}>{item.type}</div>
+                    <h3 className="font-display text-2xl font-semibold mb-2" style={{ color: "hsl(24,20%,18%)" }}>{item.name}</h3>
+                    <p className="font-body text-sm leading-relaxed mb-4" style={{ color: "hsl(24,15%,45%)" }}>{item.desc}</p>
+                    <div className="flex items-center justify-between">
+                      <div>
+                        <span className="font-display text-2xl font-semibold" style={{ color: "hsl(15,55%,42%)" }}>{item.price}</span>
+                        <span className="font-body text-xs ml-1" style={{ color: "hsl(24,15%,45%)" }}>/ {item.volume}</span>
+                      </div>
+                      <button
+                        onClick={() => scrollTo("order")}
+                        className="inline-flex items-center gap-1 text-sm font-body font-medium hover:underline"
+                        style={{ color: "hsl(15,55%,42%)" }}
+                      >
+                        Заказать <Icon name="ArrowRight" size={14} />
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          )}
 
           <div className="text-center mt-10">
             <p className="font-body text-sm" style={{ color: "hsl(24,15%,45%)" }}>Это только часть ассортимента. Уточните полный каталог у менеджера.</p>
