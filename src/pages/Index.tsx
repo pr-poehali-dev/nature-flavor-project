@@ -1,8 +1,7 @@
 import { useState } from "react";
 import Icon from "@/components/ui/icon";
-import Logo from "@/components/Logo";
 
-
+const IMG_LOGO = "https://cdn.poehali.dev/projects/32ce1ba6-2d08-4502-a6d8-df9c23186132/bucket/0fd4115a-f981-4939-ac44-54c00256234c.jpg";
 const IMG_HERO = "https://cdn.poehali.dev/projects/32ce1ba6-2d08-4502-a6d8-df9c23186132/files/a958ae2d-f930-4685-a342-6f70394f016b.jpg";
 const IMG_FRUITS = "https://cdn.poehali.dev/projects/32ce1ba6-2d08-4502-a6d8-df9c23186132/files/c45cd9e7-8cbf-411f-a26f-f45d80ea4f98.jpg";
 const IMG_TERRACE = "https://cdn.poehali.dev/projects/32ce1ba6-2d08-4502-a6d8-df9c23186132/files/30f11bae-0215-42f6-9a75-7751a59e2e4a.jpg";
@@ -144,8 +143,12 @@ export default function Index() {
       <header className="sticky top-0 z-50 border-b" style={{ backgroundColor: "rgba(252,248,240,0.96)", backdropFilter: "blur(12px)", borderColor: BORDER }}>
         <div className="container mx-auto px-4 flex items-center justify-between h-16">
           <button className="flex items-center" onClick={() => scrollTo("home")}>
-            <Logo width={48} height={48} />
-            <span className="font-display text-xl font-semibold ml-2 hidden sm:inline" style={{ color: DARK }}>Море Ягод</span>
+            <img
+              src={IMG_LOGO}
+              alt="Море Ягод"
+              className="h-12 w-auto"
+              style={{ mixBlendMode: "multiply", objectFit: "contain" }}
+            />
           </button>
 
           <nav className="hidden md:flex items-center gap-7">
@@ -188,7 +191,12 @@ export default function Index() {
           <div className="pb-16 md:pb-20">
             {/* Hero logo */}
             <div className="animate-fade-up mb-4">
-              <Logo width={160} height={160} />
+              <img
+                src={IMG_LOGO}
+                alt="Море Ягод"
+                className="h-40 md:h-52 w-auto"
+                style={{ mixBlendMode: "multiply", objectFit: "contain" }}
+              />
             </div>
 
             <h1 className="font-display font-semibold leading-[1.05] mb-7 animate-fade-up delay-100" style={{ fontSize: "clamp(2.4rem,5vw,4rem)", color: DARK }}>
@@ -705,9 +713,13 @@ export default function Index() {
       <footer className="border-t py-10" style={{ backgroundColor: DARK, borderColor: "rgba(255,255,255,0.08)" }}>
         <div className="container mx-auto px-4">
           <div className="flex flex-col md:flex-row items-center justify-between gap-5">
-            <div className="flex items-center gap-2">
-              <Logo width={44} height={44} className="opacity-90" />
-              <span className="font-display text-xl font-semibold" style={{ color: CREAM }}>Море Ягод</span>
+            <div className="flex items-center">
+              <img
+                src={IMG_LOGO}
+                alt="Море Ягод"
+                className="h-12 w-auto"
+                style={{ objectFit: "contain", filter: "brightness(0) invert(1)", opacity: 0.82 }}
+              />
             </div>
             <p className="font-body text-sm text-center" style={{ color: "rgba(252,248,240,0.38)" }}>
               © 2012–2026 ООО «Море Ягод». Все права защищены.
