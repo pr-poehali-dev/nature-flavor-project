@@ -205,41 +205,14 @@ export default function Index() {
           {/* text col */}
           <div className="pb-16 md:pb-20">
 
-            {/* Россыпь фруктов + название */}
-            <div className="animate-fade-up mb-6">
-              {/* Фруктовая россыпь */}
-              <div className="flex flex-wrap gap-2 mb-4 select-none" aria-hidden="true">
-                {[
-                  { e: "🍓", s: "text-4xl", r: "-rotate-12" },
-                  { e: "🥭", s: "text-5xl", r: "rotate-6" },
-                  { e: "🍋", s: "text-3xl", r: "-rotate-6" },
-                  { e: "🫐", s: "text-4xl", r: "rotate-12" },
-                  { e: "🍊", s: "text-3xl", r: "-rotate-3" },
-                  { e: "🍇", s: "text-4xl", r: "rotate-8" },
-                  { e: "🍈", s: "text-3xl", r: "-rotate-10" },
-                  { e: "🍍", s: "text-4xl", r: "rotate-4" },
-                  { e: "🍒", s: "text-3xl", r: "-rotate-7" },
-                  { e: "🥝", s: "text-4xl", r: "rotate-10" },
-                ].map((item, i) => (
-                  <span
-                    key={i}
-                    className={`${item.s} ${item.r} inline-block transition-transform hover:scale-125 duration-200 drop-shadow-sm`}
-                    style={{ animationDelay: `${i * 0.05}s` }}
-                  >
-                    {item.e}
-                  </span>
-                ))}
-              </div>
-
-              {/* Крупный заголовок МОРЕ ЯГОД */}
-              <h1
-                className="font-display font-bold leading-none tracking-tight"
-                style={{ fontSize: "clamp(3.5rem,9vw,7rem)", color: DARK }}
-              >
-                <span style={{ color: BERRY }}>МОРЕ</span>{" "}
-                <span style={{ color: CITRUS }}>ЯГОД</span>
-              </h1>
-            </div>
+            {/* Крупный заголовок МОРЕ ЯГОД */}
+            <h1
+              className="font-display font-bold leading-none tracking-tight animate-fade-up mb-6"
+              style={{ fontSize: "clamp(3.5rem,9vw,7rem)", color: DARK }}
+            >
+              <span style={{ color: BERRY }}>МОРЕ</span>{" "}
+              <span style={{ color: CITRUS }}>ЯГОД</span>
+            </h1>
 
             {/* Слоган */}
             <p className="font-display text-xl md:text-2xl font-medium mb-5 animate-fade-up delay-100" style={{ color: DARK, lineHeight: 1.3 }}>
