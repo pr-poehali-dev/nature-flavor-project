@@ -142,13 +142,25 @@ export default function Index() {
       {/* ── NAV ── */}
       <header className="sticky top-0 z-50 border-b" style={{ backgroundColor: "rgba(252,248,240,0.96)", backdropFilter: "blur(12px)", borderColor: BORDER }}>
         <div className="container mx-auto px-4 flex items-center justify-between h-16">
-          <button className="flex items-center" onClick={() => scrollTo("home")}>
-            <img
-              src={IMG_LOGO}
-              alt="Море Ягод"
-              className="h-12 w-auto"
-              style={{ mixBlendMode: "multiply", objectFit: "contain" }}
-            />
+          <button className="flex items-center gap-2.5" onClick={() => scrollTo("home")}>
+            {/* Веточка SVG */}
+            <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+              {/* Стебель */}
+              <path d="M16 28 C16 28 14 20 16 12 C18 4 16 2 16 2" stroke={BERRY} strokeWidth="1.8" strokeLinecap="round" fill="none"/>
+              {/* Листья левые */}
+              <path d="M16 20 C13 18 9 19 8 16 C11 14 15 16 16 20Z" fill={`hsl(95,38%,38%)`} opacity="0.85"/>
+              <path d="M16 14 C13 12 10 13 9 10 C12 8 15 10 16 14Z" fill={`hsl(95,38%,38%)`} opacity="0.7"/>
+              {/* Листья правые */}
+              <path d="M16 22 C19 20 23 21 24 18 C21 16 17 18 16 22Z" fill={`hsl(95,38%,38%)`} opacity="0.85"/>
+              <path d="M16 16 C19 14 22 15 23 12 C20 10 17 12 16 16Z" fill={`hsl(95,38%,38%)`} opacity="0.7"/>
+              {/* Ягоды */}
+              <circle cx="8" cy="16" r="2.2" fill={BERRY}/>
+              <circle cx="24" cy="18" r="2.2" fill={BERRY}/>
+              <circle cx="9" cy="10" r="1.8" fill={BERRY} opacity="0.8"/>
+              <circle cx="23" cy="12" r="1.8" fill={BERRY} opacity="0.8"/>
+              <circle cx="16" cy="6" r="1.8" fill={BERRY} opacity="0.7"/>
+            </svg>
+            <span className="font-display text-xl font-semibold tracking-tight" style={{ color: DARK }}>Море Ягод</span>
           </button>
 
           <nav className="hidden md:flex items-center gap-7">
@@ -189,14 +201,34 @@ export default function Index() {
         <div className="container mx-auto px-4 pt-14 pb-0 grid md:grid-cols-2 gap-10 items-end relative">
           {/* text col */}
           <div className="pb-16 md:pb-20">
-            {/* Hero logo */}
+            {/* Hero logo — обрезаем нижнюю подпись через clipPath, убираем фон через mix-blend-mode */}
             <div className="animate-fade-up mb-4">
-              <img
-                src={IMG_LOGO}
-                alt="Море Ягод"
-                className="h-40 md:h-52 w-auto"
-                style={{ mixBlendMode: "multiply", objectFit: "contain" }}
-              />
+              {/*
+                Оригинал ~1366×768. Подпись занимает нижние ~28%.
+                Берём только верхние 72% → clipPath по высоте 0..72%
+                viewBox сохраняет пропорции.
+              */}
+              <svg
+                viewBox="0 0 1366 553"
+                width="300"
+                height="122"
+                style={{ mixBlendMode: "multiply", display: "block" }}
+                xmlns="http://www.w3.org/2000/svg"
+                xmlnsXlink="http://www.w3.org/1999/xlink"
+              >
+                <defs>
+                  <clipPath id="logo-clip">
+                    <rect x="180" y="0" width="1006" height="553" />
+                  </clipPath>
+                </defs>
+                <image
+                  href={IMG_LOGO}
+                  x="0" y="0"
+                  width="1366" height="768"
+                  clipPath="url(#logo-clip)"
+                  preserveAspectRatio="xMidYMin slice"
+                />
+              </svg>
             </div>
 
             <h1 className="font-display font-semibold leading-[1.05] mb-7 animate-fade-up delay-100" style={{ fontSize: "clamp(2.4rem,5vw,4rem)", color: DARK }}>
@@ -713,13 +745,20 @@ export default function Index() {
       <footer className="border-t py-10" style={{ backgroundColor: DARK, borderColor: "rgba(255,255,255,0.08)" }}>
         <div className="container mx-auto px-4">
           <div className="flex flex-col md:flex-row items-center justify-between gap-5">
-            <div className="flex items-center">
-              <img
-                src={IMG_LOGO}
-                alt="Море Ягод"
-                className="h-12 w-auto"
-                style={{ objectFit: "contain", filter: "brightness(0) invert(1)", opacity: 0.82 }}
-              />
+            <div className="flex items-center gap-2.5">
+              <svg width="28" height="28" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M16 28 C16 28 14 20 16 12 C18 4 16 2 16 2" stroke="hsl(44,50%,90%)" strokeWidth="1.8" strokeLinecap="round" fill="none"/>
+                <path d="M16 20 C13 18 9 19 8 16 C11 14 15 16 16 20Z" fill="hsl(95,35%,60%)" opacity="0.9"/>
+                <path d="M16 14 C13 12 10 13 9 10 C12 8 15 10 16 14Z" fill="hsl(95,35%,60%)" opacity="0.75"/>
+                <path d="M16 22 C19 20 23 21 24 18 C21 16 17 18 16 22Z" fill="hsl(95,35%,60%)" opacity="0.9"/>
+                <path d="M16 16 C19 14 22 15 23 12 C20 10 17 12 16 16Z" fill="hsl(95,35%,60%)" opacity="0.75"/>
+                <circle cx="8" cy="16" r="2.2" fill="hsl(340,62%,68%)"/>
+                <circle cx="24" cy="18" r="2.2" fill="hsl(340,62%,68%)"/>
+                <circle cx="9" cy="10" r="1.8" fill="hsl(340,62%,68%)" opacity="0.85"/>
+                <circle cx="23" cy="12" r="1.8" fill="hsl(340,62%,68%)" opacity="0.85"/>
+                <circle cx="16" cy="6" r="1.8" fill="hsl(340,62%,68%)" opacity="0.7"/>
+              </svg>
+              <span className="font-display text-xl font-semibold" style={{ color: CREAM }}>Море Ягод</span>
             </div>
             <p className="font-body text-sm text-center" style={{ color: "rgba(252,248,240,0.38)" }}>
               © 2012–2026 ООО «Море Ягод». Все права защищены.
