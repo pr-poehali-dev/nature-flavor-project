@@ -2,6 +2,8 @@ import { useState } from "react";
 import Icon from "@/components/ui/icon";
 
 const IMG_LOGO = "https://cdn.poehali.dev/projects/32ce1ba6-2d08-4502-a6d8-df9c23186132/bucket/0fd4115a-f981-4939-ac44-54c00256234c.jpg";
+const IMG_SMOOTHIES = "https://cdn.poehali.dev/projects/32ce1ba6-2d08-4502-a6d8-df9c23186132/bucket/f85c7bd7-cc6a-4e34-9d44-8e70b9bcecce.jpg";
+const IMG_CAPSULES = "https://cdn.poehali.dev/projects/32ce1ba6-2d08-4502-a6d8-df9c23186132/bucket/877a75a5-5860-496e-88cf-7afef363c4da.jpg";
 const IMG_HERO = "https://cdn.poehali.dev/projects/32ce1ba6-2d08-4502-a6d8-df9c23186132/files/a958ae2d-f930-4685-a342-6f70394f016b.jpg";
 const IMG_FRUITS = "https://cdn.poehali.dev/projects/32ce1ba6-2d08-4502-a6d8-df9c23186132/files/c45cd9e7-8cbf-411f-a26f-f45d80ea4f98.jpg";
 const IMG_TERRACE = "https://cdn.poehali.dev/projects/32ce1ba6-2d08-4502-a6d8-df9c23186132/files/30f11bae-0215-42f6-9a75-7751a59e2e4a.jpg";
@@ -201,34 +203,8 @@ export default function Index() {
         <div className="container mx-auto px-4 pt-14 pb-0 grid md:grid-cols-2 gap-10 items-end relative">
           {/* text col */}
           <div className="pb-16 md:pb-20">
-            {/* Hero logo — обрезаем нижнюю подпись через clipPath, убираем фон через mix-blend-mode */}
-            <div className="animate-fade-up mb-4">
-              {/*
-                Оригинал ~1366×768. Подпись занимает нижние ~28%.
-                Берём только верхние 72% → clipPath по высоте 0..72%
-                viewBox сохраняет пропорции.
-              */}
-              <svg
-                viewBox="0 0 1366 553"
-                width="300"
-                height="122"
-                style={{ mixBlendMode: "multiply", display: "block" }}
-                xmlns="http://www.w3.org/2000/svg"
-                xmlnsXlink="http://www.w3.org/1999/xlink"
-              >
-                <defs>
-                  <clipPath id="logo-clip">
-                    <rect x="180" y="0" width="1006" height="553" />
-                  </clipPath>
-                </defs>
-                <image
-                  href={IMG_LOGO}
-                  x="0" y="0"
-                  width="1366" height="768"
-                  clipPath="url(#logo-clip)"
-                  preserveAspectRatio="xMidYMin slice"
-                />
-              </svg>
+            <div className="inline-flex items-center gap-2 text-xs font-body font-medium px-4 py-1.5 rounded-full mb-7 animate-fade-up" style={{ backgroundColor: BERRY_LIGHT, color: BERRY }}>
+              🌿 Натуральные концентраты без консервантов
             </div>
 
             <h1 className="font-display font-semibold leading-[1.05] mb-7 animate-fade-up delay-100" style={{ fontSize: "clamp(2.4rem,5vw,4rem)", color: DARK }}>
@@ -270,25 +246,42 @@ export default function Index() {
             </div>
           </div>
 
-          {/* image col — arch-shaped photo */}
-          <div className="relative flex justify-center animate-fade-up delay-300">
-            <div
-              className="relative w-full max-w-sm overflow-hidden shadow-2xl"
-              style={{ borderRadius: "50% 50% 0 0 / 30% 30% 0 0", aspectRatio: "4/5" }}
-            >
-              <img src={IMG_HERO} alt="Ягодный рынок" className="w-full h-full object-cover" />
-              <div className="absolute inset-0" style={{ background: "linear-gradient(to top, rgba(20,8,5,0.35) 0%, transparent 55%)" }} />
+          {/* product visuals */}
+          <div className="relative flex flex-col gap-4 pb-8 animate-fade-up delay-300">
+            {/* Смузи дойпаки */}
+            <div className="relative rounded-3xl overflow-hidden shadow-xl" style={{ aspectRatio: "16/9" }}>
+              <img
+                src={IMG_SMOOTHIES}
+                alt="Смузи Море Ягод"
+                className="w-full h-full object-cover object-center"
+                style={{ objectPosition: "60% center" }}
+              />
+              <div className="absolute inset-0" style={{ background: "linear-gradient(to right, rgba(20,8,5,0.45) 0%, transparent 50%)" }} />
+              <div className="absolute bottom-4 left-4">
+                <div className="font-body text-xs font-semibold uppercase tracking-widest mb-1" style={{ color: "rgba(252,248,240,0.7)" }}>Дойпак · смузи</div>
+                <div className="font-display text-2xl font-semibold" style={{ color: CREAM }}>Манго, клубника,<br/>маракуйя</div>
+              </div>
+              <div className="absolute top-3 right-3 px-3 py-1 rounded-full font-body text-xs font-semibold" style={{ backgroundColor: SUN, color: DARK }}>
+                Без консервантов
+              </div>
             </div>
 
-            {/* floating badge */}
-            <div className="absolute bottom-6 -left-4 rounded-2xl px-4 py-3 shadow-xl" style={{ backgroundColor: CREAM }}>
-              <div className="font-display text-3xl">🍓</div>
-              <div className="font-body text-xs mt-0.5" style={{ color: MUTED }}>Собрано вручную</div>
-            </div>
-
-            {/* sun badge */}
-            <div className="absolute top-8 -right-2 w-16 h-16 rounded-full flex items-center justify-center shadow-lg" style={{ backgroundColor: SUN }}>
-              <span className="text-2xl">✨</span>
+            {/* Капсулы лимонадов */}
+            <div className="relative rounded-3xl overflow-hidden shadow-xl" style={{ aspectRatio: "16/8" }}>
+              <img
+                src={IMG_CAPSULES}
+                alt="Капсулы лимонадов Море Ягод"
+                className="w-full h-full object-cover"
+                style={{ objectPosition: "center 30%" }}
+              />
+              <div className="absolute inset-0" style={{ background: "linear-gradient(to right, rgba(20,8,5,0.5) 0%, transparent 55%)" }} />
+              <div className="absolute bottom-4 left-4">
+                <div className="font-body text-xs font-semibold uppercase tracking-widest mb-1" style={{ color: "rgba(252,248,240,0.7)" }}>Капсула · лимонад</div>
+                <div className="font-display text-2xl font-semibold" style={{ color: CREAM }}>Лайм-мята,<br/>грейпфрут, базилик</div>
+              </div>
+              <div className="absolute top-3 right-3 px-3 py-1 rounded-full font-body text-xs font-semibold" style={{ backgroundColor: BERRY_LIGHT, color: BERRY }}>
+                15+ вкусов
+              </div>
             </div>
           </div>
         </div>
@@ -389,6 +382,17 @@ export default function Index() {
           {/* Lemonades */}
           {activeTab === "lemonades" && (
             <div className="flex flex-col gap-10">
+              {/* Фото-баннер капсул */}
+              <div className="relative rounded-3xl overflow-hidden shadow-lg mb-2" style={{ aspectRatio: "16/6" }}>
+                <img src={IMG_CAPSULES} alt="Капсулы лимонадов" className="w-full h-full object-cover" style={{ objectPosition: "center 30%" }} />
+                <div className="absolute inset-0" style={{ background: "linear-gradient(to right, rgba(10,4,2,0.55) 0%, transparent 60%)" }} />
+                <div className="absolute inset-0 flex items-center px-8">
+                  <div>
+                    <div className="font-body text-xs uppercase tracking-widest font-semibold mb-1" style={{ color: "rgba(252,248,240,0.7)" }}>Капсула 70г · с кусочками фруктов</div>
+                    <div className="font-display text-3xl font-semibold" style={{ color: CREAM }}>Капсулы с разными вкусами<br/>и натуральными фруктами</div>
+                  </div>
+                </div>
+              </div>
               {LEMONADE_BASES.map((base) => (
                 <div key={base.base}>
                   <div className="flex items-center gap-3 mb-5">
@@ -426,7 +430,22 @@ export default function Index() {
 
           {/* Smoothies */}
           {activeTab === "smoothies" && (
-            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+            <div className="flex flex-col gap-6">
+              {/* Фото-баннер смузи */}
+              <div className="relative rounded-3xl overflow-hidden shadow-lg" style={{ aspectRatio: "16/6" }}>
+                <img src={IMG_SMOOTHIES} alt="Смузи Море Ягод" className="w-full h-full object-cover" style={{ objectPosition: "60% center" }} />
+                <div className="absolute inset-0" style={{ background: "linear-gradient(to right, rgba(10,4,2,0.55) 0%, transparent 55%)" }} />
+                <div className="absolute inset-0 flex items-center px-8">
+                  <div>
+                    <div className="font-body text-xs uppercase tracking-widest font-semibold mb-1" style={{ color: "rgba(252,248,240,0.7)" }}>Дойпак · zip-замок</div>
+                    <div className="font-display text-3xl font-semibold" style={{ color: CREAM }}>Только натуральные ягоды<br/>и тропические фрукты</div>
+                  </div>
+                </div>
+                <div className="absolute top-4 right-4 px-3 py-1.5 rounded-full font-body text-xs font-semibold" style={{ backgroundColor: SUN, color: DARK }}>
+                  Без красителей и консервантов
+                </div>
+              </div>
+              <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
               {CATALOG_SMOOTHIES.map((item) => (
                 <div key={item.name} className="card-hover rounded-3xl overflow-hidden border" style={{ backgroundColor: item.accent, borderColor: "transparent" }}>
                   <div className="p-7">
@@ -442,6 +461,7 @@ export default function Index() {
                   </div>
                 </div>
               ))}
+              </div>
             </div>
           )}
 
