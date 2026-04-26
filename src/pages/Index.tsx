@@ -401,6 +401,45 @@ export default function Index() {
 
       <hr className="divider-organic mx-8" />
 
+      {/* ДОЙПАК БАННЕР */}
+      <section className="py-14 md:py-20">
+        <div className="container mx-auto px-4">
+          <div className="rounded-3xl p-8 md:p-12 relative overflow-hidden" style={{ backgroundColor: "hsl(140,22%,88%)" }}>
+            <div className="absolute top-0 right-0 text-[180px] leading-none opacity-10 pointer-events-none select-none">🥤</div>
+            <div className="relative grid md:grid-cols-2 gap-10 items-center">
+              <div>
+                <span className="font-body text-xs uppercase tracking-widest mb-2 inline-block" style={{ color: "hsl(140,38%,32%)" }}>Упаковка смузи</span>
+                <h2 className="font-display text-3xl md:text-4xl font-semibold mb-4" style={{ color: "hsl(24,20%,18%)" }}>
+                  Дойпак — умная упаковка
+                </h2>
+                <p className="font-body leading-relaxed" style={{ color: "hsl(24,15%,38%)" }}>
+                  Смузи приходят в дойпаке с zip-замком: добавил воду, взбил в блендере — и перелил обратно. Никакой лишней тары.
+                </p>
+              </div>
+              <div className="grid grid-cols-1 gap-4">
+                {[
+                  { icon: "RefreshCw", title: "Вторичное использование", desc: "Zip-замок закрывается повторно — дойпак служит стаканом, бутылкой или контейнером." },
+                  { icon: "Backpack", title: "Удобно брать с собой", desc: "Лёгкий, не бьётся, помещается в любую сумку. Идеально для спорта и путешествий." },
+                  { icon: "Leaf", title: "Бережёт природу", desc: "Меньше пластика и стекла — одна упаковка заменяет стакан, крышку и трубочку." },
+                ].map((item) => (
+                  <div key={item.title} className="flex gap-4 items-start rounded-2xl p-4" style={{ backgroundColor: "rgba(255,255,255,0.55)" }}>
+                    <div className="w-10 h-10 rounded-full flex items-center justify-center shrink-0" style={{ backgroundColor: "hsl(140,38%,32%)" }}>
+                      <Icon name={item.icon} size={18} style={{ color: "hsl(36,28%,97%)" }} />
+                    </div>
+                    <div>
+                      <div className="font-display font-semibold text-base mb-0.5" style={{ color: "hsl(24,20%,18%)" }}>{item.title}</div>
+                      <div className="font-body text-sm leading-relaxed" style={{ color: "hsl(24,15%,42%)" }}>{item.desc}</div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <hr className="divider-organic mx-8" />
+
       {/* КАК ЗАКАЗАТЬ */}
       <section id="order" className="py-16 md:py-24">
         <div className="container mx-auto px-4">
