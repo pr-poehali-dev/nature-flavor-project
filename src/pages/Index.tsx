@@ -194,8 +194,8 @@ export default function Index() {
               <span>🌿</span> Натуральные концентраты без консервантов
             </div>
             <h1 className="font-display text-5xl md:text-7xl font-semibold leading-tight mb-6 animate-fade-up delay-100" style={{ color: "hsl(24,20%,18%)" }}>
-              Живой вкус<br />
-              <em className="not-italic" style={{ color: "hsl(15,55%,42%)" }}>природы</em><br />
+              Море<br />
+              <em className="not-italic" style={{ color: "hsl(15,55%,42%)" }}>Ягод</em><br />
               в каждом стакане
             </h1>
             <p className="font-body text-lg leading-relaxed mb-8 animate-fade-up delay-200" style={{ color: "hsl(24,15%,45%)" }}>
